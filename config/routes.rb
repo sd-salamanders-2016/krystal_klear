@@ -1,9 +1,32 @@
 Rails.application.routes.draw do
+  resources :work_orders
+  resources :routes do
+    member do
+      patch 'current_week_work_orders', to: 'current_week_work_orders#update'
+    end
+  end
+
+  devise_for :users
+  resources :users
+  resources :clients do
+    resources :jobs
+  end
+
+
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+
+  devise_scope :user do
+    root to: "devise/sessions#new"
+  end
+
+  # as :user do
+  #   get '/users/:id', to: "users#show"
+  # end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -15,17 +38,30 @@ Rails.application.routes.draw do
   #   resources :products
 
   # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
+    # resources :products do
+    #   member do
+    #     get 'short'
+    #     post 'toggle'
+    #   end
 
+    #   collection do
+    #     get 'sold'
+    #   end
+    # end
+  resources :work_orders do
+    collection do
+      post 'next'
+    end
+    collection do
+      post 'current'
+    end
+  end
+
+  resources :users do
+    member do
+      get 'employee'
+    end
+  end
   # Example resource route with sub-resources:
   #   resources :products do
   #     resources :comments, :sales

@@ -1,0 +1,81 @@
+<% current_week = Time.now.strftime('%W').to_i %>
+<section class="create-new-link line"><%= link_to "New Route +", new_route_path %></section>
+<section class="create-new-link line"><%= link_to "New Employee +", new_user_path %></section>
+<section class="create-new-link line"><%= link_to "New Client +", new_client_path %></section>
+<p>It is currently week <%=Time.now.strftime('%W')%> of the year <%=Time.now.strftime('%Y')%></p>
+<div class="week-form">
+  <%= form_tag('/work_orders', method: :get) do %>
+  <% work_orders = WorkOrder.all %>
+  <%= label_tag "Select Week"%>
+  <%= select_tag "Week", options_for_select(1..52), include_blank: true %>
+  <%= submit_tag "Search Work Orders" %>
+  <% end %>
+  </div>
+<div class="work-order">
+<% if @last_work_order_week.to_i < Time.now.strftime('%W').to_i %>
+  <section class="create-new-link line work-order-link"><%= link_to "Generate current week's work orders +", current_work_orders_path, method: :post %></section>
+  <section class="create-new-link line work-order-link"><%= link_to "Generate next week's work orders +", next_work_orders_path, method: :post %></section>
+<% elsif @last_work_order_week == Time.now.strftime('%W').to_i %>
+  <section class="create-new-link line work-order-link"><%= link_to "Generate next week's work orders +", next_work_orders_path, method: :post %></section>
+<% end %>
+</div>
+<div class="open-work-orders">
+
+<h2>Open Routes</h2>
+<% routes = Route.all %>
+<% routes.each do |route| %>
+<hr>
+<h3 class="route"><%= route.name %></h3>
+<div class="form_container">
+
+  <%= form_tag(current_week_work_orders_route_path(route), method: :patch) do %>
+    <div class="form-inputs">
+      <%= select_tag 'employees', options_from_collection_for_select(User.all, "id", "name"),  multiple: true %>
+    </div>
+    <div class="form-actions">
+      <%= submit_tag "Assign" %>
+    </div>
+  <% end %>
+
+  </div>
+<table id="routes_list">
+  <tr>
+    <th>Job Name</th>
+    <th>Week</th>
+    <th>Complete</th>
+    <th>Estimated Price</th>
+  </tr>
+    <% route.work_orders.where(week: current_week).each do |wo|%>
+    <tr>
+      <td><%= wo.job.name %></td>
+      <td><%= wo.week %></td>
+      <td><%= wo.complete %></td>
+      <td><%= wo.job.estimated_price %></td>
+    </tr>
+     <% end %>
+    </table>
+  <% end %>
+</div>
+
+<div class="employees">
+<h2>Employees</h2>
+  <% employees = User.all %>
+  <% employees.each do |employee| %>
+  <table id="employees_list">
+  <tr class="row-align">
+    <th><h3><%= employee.name %></h3></th>
+  </tr>
+  <% if employee.current_week_routes.count == 0 %>
+    <tr class="employee row-align">
+      <td class="no-padding">No assigned routes....</td>
+    </tr>
+  <% else %>
+    <% employee.current_week_routes.pluck(:name).uniq.each do |route| %>
+      <tr class="employee row-align">
+        <td class="blue no-padding"><%= route %></td>
+      </tr>
+    <% end %>
+  <% end %>
+  </table>
+  <% end %>
+</div>

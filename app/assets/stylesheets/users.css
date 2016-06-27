@@ -1,0 +1,54 @@
+.name-header {
+  text-align: center;
+  font-size: 22px;
+}
+
+.orders-container {
+  margin: 0 auto;
+  /*width: 650px;*/
+}
+
+.incomplete-orders {
+  max-width: 500px;
+  display: inline-block;
+  margin: 10px;
+  margin-right: 0;
+}
+
+.complete-orders {
+  max-width: 500px;
+  display: inline-block;
+  margin: 10px;
+  position: absolute;
+}
+
+.passed-orders {
+  max-width: 500px;
+  /*display: inline-block;*/
+  margin: 10px;
+  float: bottom;
+}
+
+.open-work-orders {
+  display: inline-block;
+  float: left;
+}
+
+.employees {
+  display: inline-block;
+}
+
+.employee-table {
+  margin: 0 auto;
+}
+
+.create-new-link {
+  padding:5px 15px;
+  background:#ccddff;
+  border:0 none;
+  cursor:pointer;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  margin-top: 15px;
+  width: 130px;
+}

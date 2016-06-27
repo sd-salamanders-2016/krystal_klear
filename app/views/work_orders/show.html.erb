@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Employees:</strong>
+  <% @work_order.employees.each do |employee| %>
+    <%= employee.name %>
+  <% end %>
+</p>
+
+<p>
+  <strong>Client:</strong>
+  <%= @work_order.job.client.business_name %>
+</p>
+
+<p>
+  <strong>Job:</strong>
+  <%= @work_order.job.name %>
+</p>
+
+<p>
+  <strong>Job Description:</strong>
+  <%= @work_order.job.description %>
+</p>
+
+<p>
+  <strong>Estimated price:</strong>
+  <%= @work_order.job.estimated_price %>
+</p>
+
+<p>
+  <strong>Final price:</strong>
+  <%= @work_order.final_price %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @work_order.notes %>
+</p>
+
+<p>
+  <strong>Complete:</strong>
+  <%= @work_order.complete %>
+</p>
+
+<%= link_to 'Edit', edit_work_order_path(@work_order) %> |
+<%= link_to 'Back', user_path(current_user) %>

@@ -1,0 +1,70 @@
+<h2 class="name-header"><%= @user.name %></h2>
+<% current_week = Time.now.strftime('%W').to_i %>
+<div class="orders-container">
+
+<div class="incomplete-orders">
+  <h3>Incomplete Work Orders</h3>
+  <ul>
+  <% @user.current_week_routes.distinct.each do |route| %>
+    <h4><%= route.name %></h4>
+    <table>
+      <tr>
+        <th>Job Name</th>
+        <th>Estimated Price</th>
+        <th>Complete</th>
+      </tr>
+    <% route.current_week_work_orders.where(complete: 'incomplete').each do |wo|  %>
+      <tr>
+        <td><%= link_to "#{wo.job.name}", work_order_path(wo)  %></td>
+        <td><%= wo.job.estimated_price  %></td>
+        <td><%= render partial: "work_orders/done_form", locals: { wo: wo } %></td>
+      </tr>
+      <% end %>
+    </table>
+    <% end %>
+  </ul>
+</div>
+
+<div class="complete-orders">
+  <h3>Complete Work Orders</h3>
+  <ul>
+  <% @user.current_week_routes.distinct.each do |route| %>
+    <h4><%= route.name %></h4>
+    <table>
+      <tr>
+        <th>Job Name</th>
+        <th>Final Price</th>
+      </tr>
+    <% route.current_week_work_orders.where(complete: 'complete').each do |wo|  %>
+      <tr>
+        <td><%= link_to "#{wo.job.name}", work_order_path(wo)  %></td>
+        <td><%= wo.final_price  %></td>
+      </tr>
+      <% end %>
+    </table>
+    <% end %>
+  </ul>
+</div>
+
+<div class="passed-orders">
+  <h3>Customer Pass Work Orders</h3>
+  <ul>
+  <% @user.current_week_routes.distinct.each do |route| %>
+    <h4><%= route.name %></h4>
+    <table>
+      <tr>
+        <th>Job Name</th>
+        <th>Estimated Price</th>
+      </tr>
+    <% route.current_week_work_orders.where(complete: 'pass').each do |wo|  %>
+      <tr>
+        <td><%= link_to "#{wo.job.name}", work_order_path(wo)  %></td>
+        <td><%= wo.job.estimated_price  %></td>
+      </tr>
+      <% end %>
+    </table>
+    <% end %>
+  </ul>
+</div>
+
+</div>
