@@ -47,7 +47,7 @@ end
 
 10.times do
   Route.create!({
-    name: Faker::Address.street_address,
+    name: Faker::Address.street_name,
     description: Faker::Lorem.sentence
     })
 end
