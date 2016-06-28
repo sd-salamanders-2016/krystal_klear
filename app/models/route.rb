@@ -11,7 +11,7 @@ class Route < ActiveRecord::Base
 
   def sum_jobs
     total = 0
-    this.jobs.each do |job|
+    self.jobs.each do |job|
       total += job.estimated_price
     end
     return total
