@@ -14,7 +14,7 @@
  *= require_self
  */
 
-body {
+/*body {
   margin:0px 5%;
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
@@ -26,7 +26,7 @@ body {
   width: 90%;
   top: 0px;
   border: solid black 3px;
-  background-image: url(http://i.imgur.com/W3Da7VH.jpg);
+  background: url(http://i.imgur.com/W3Da7VH.jpg);
 }
 
 #navbar-whitespace {
@@ -98,11 +98,11 @@ nav li {
   border-radius: 5px;
   margin-top: 15px;
   width: 50px;
-}
+}*/
 
 
 /*--------------- route tiles --------------*/
-.route-tile {
+/*.route-tile {
   border: solid black 1px;
   box-shadow: -2px 2px;
 }
@@ -133,7 +133,7 @@ nav li {
 
 .route-amount {
   font-size: .7em;
-}
+}*/
 
 
 

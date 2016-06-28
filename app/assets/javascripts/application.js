@@ -21,9 +21,13 @@ $(function(){
   });
 
   $( ".droppable" ).droppable({
-    accept: "a",
     drop: function(event, ui){
-      alert("I'm in the mainframe!")
+      console.log(event);
+      $(this).append("<p>NOT THERE. THERE!</p>");
+    },
+    over: function(event, ui) {
+      console.log(event);
+      $(this).css('background-color', 'orange');
     }
   });
 });
