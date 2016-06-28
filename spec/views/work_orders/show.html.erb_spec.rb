@@ -9,9 +9,9 @@ RSpec.describe "work_orders/show", type: :view do
       :notes => "MyText",
       :complete => false
     ))
+    @work_order.employees =[User.first]
   end
 
-  @work_order.employees =[User.first]
 
   it "renders attributes in <p>" do
     render
