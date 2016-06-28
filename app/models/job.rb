@@ -4,6 +4,10 @@ class Job < ActiveRecord::Base
   validates :name, :description, :frequency, :estimated_price, {presence: true}
   has_many :work_orders
 
+  def has_route?
+    !self.client_id.nil?
+  end
+
   def self.generate_work_order
     current_week = Time.now.strftime('%W').to_i
     jobs = Job.all
