@@ -16,7 +16,7 @@
 //= require_tree .
 
 $(function(){
-  $(".route").draggable({
+  $("div.route").draggable({
     helper: "clone",
   });
 
