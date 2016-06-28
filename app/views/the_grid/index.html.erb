@@ -3,15 +3,15 @@
 <h1 class="name-header">Weekly Schedule</h1>
 
 <div id="test-div">
-<h3>Open Jobs</h3>
-<% @independent_jobs.each do |job| %>
-<p><%= job.name | job.estimated_price.round(2) %></p>
-<% end %>
-<p>-------------------------------------</p>
-<h3>Open Routes</h3>
-<% @open_routes.each do |route| %>
-<p><%= route.name %> | <%= route.sum_jobs.round(2) %></p>
-<% end %>
+  <h3>Open Jobs</h3>
+  <% @independent_jobs.each do |job| %>
+  <p><%= job.name | job.estimated_price.round(2) %></p>
+  <% end %>
+  <p>-------------------------------------</p>
+  <h3>Open Routes</h3>
+  <% @open_routes.each do |route| %>
+  <p><%= route.name %> | <%= route.sum_jobs.round(2) %></p>
+  <% end %>
 </div>
 
 <div class="route">
@@ -86,7 +86,7 @@
             <% end %>
           </td>
           <td class='droppable'>
-            $ <%= user.sum_routes %>
+            $<%= user.sum_routes %>
           </td>
         </tr>
       <% end %>
