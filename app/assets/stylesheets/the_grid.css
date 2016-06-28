@@ -25,10 +25,9 @@
   background-color: #668cff;
 }
 
-.tests {
+.route {
   float: left;
   height: 50px;
   width: 25px;
   margin: 20px 0;
-  background-color: yellow;
 }
