@@ -16,12 +16,12 @@
 //= require_tree .
 
 $(function(){
-  $("div.route").draggable({
+  $("#route-container a").draggable({
     helper: "clone",
   });
 
   $( ".droppable" ).droppable({
-    accept: ".route",
+    accept: "a",
     drop: function(event, ui){
       alert("I'm in the mainframe!")
     }
