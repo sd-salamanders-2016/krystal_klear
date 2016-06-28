@@ -15,10 +15,30 @@
  */
 
 body {
-  margin:5%;
+  margin:0px 5%;
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
   background-color: #e6e6e6;
+}
+
+#title-and-navbar {
+  position: fixed;
+  width: 90%;
+  top: 0px;
+  border: solid black 3px;
+}
+
+#navbar-whitespace {
+  width: 91%;
+  height: 20px;
+  position: fixed;
+  margin-top: -22px;
+  z-index: 100;
+  background-color: #e6e6e6;
+}
+
+#content-container {
+  margin-top: 180px;
 }
 
 .company-title {
@@ -29,6 +49,10 @@ body {
   background-color: #4d79ff;
   padding: 10px;
   margin: 0px;
+}
+
+.company-title h1 {
+  margin-top: 0px;
 }
 
 #company-subtitle {
@@ -91,5 +115,14 @@ nav li {
   text-align: center;
   padding: 2px;
 }
+
+.route-name {
+  font-size: .7em;
+}
+
+.route-amount {
+  font-size: .7em;
+}
+
 
 

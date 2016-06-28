@@ -21,7 +21,7 @@ User.create!({
     })
 
 # CREATE STANDARD USERS
-10.times do
+20.times do
   User.create!({
     name: Faker::Name.name,
     email: Faker::Internet.email,
@@ -45,7 +45,7 @@ end
 
 # CREATE ROUTES
 
-10.times do
+20.times do
   Route.create!({
     name: Faker::Address.street_name,
     description: Faker::Lorem.sentence

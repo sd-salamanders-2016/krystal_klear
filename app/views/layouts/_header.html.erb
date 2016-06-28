@@ -1,20 +1,22 @@
-<img src="">
-<h1 class="company-title">Krystal Klear <section id="company-subtitle">Window Cleaning Services</section></h1>
+<div id='title-and-navbar'>
+    <h1 class="company-title">Krystal Klear <section id="company-subtitle">Window Cleaning Services</section></h1>
 
-<% if current_user && current_user.admin? %>
+    <% if current_user && current_user.admin? %>
 
-<nav>
-  <ul>
-    <li><%= link_to "Home", user_path(current_user) %></li>
-    <li>|</li>
-    <li><%= link_to "Employees", users_path %></li>
-    <li>|</li>
-    <li><%= link_to "Clients", clients_path %></li>
-    <li>|</li>
-    <li><%= link_to "Routes", routes_path %></li>
-    <li>|</li>
-    <li><%= link_to "The Grid", the_grid_index_path %></li>
-  </ul>
-</nav>
+    <nav>
+      <ul>
+        <li><%= link_to "Home", user_path(current_user) %></li>
+        <li>|</li>
+        <li><%= link_to "Employees", users_path %></li>
+        <li>|</li>
+        <li><%= link_to "Clients", clients_path %></li>
+        <li>|</li>
+        <li><%= link_to "Routes", routes_path %></li>
+        <li>|</li>
+        <li><%= link_to "The Grid", the_grid_index_path %></li>
+      </ul>
+    </nav>
 
-<% end %>
+    <% end %>
+</div>
+<div id='navbar-whitespace'></div>
