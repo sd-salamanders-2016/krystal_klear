@@ -8,6 +8,7 @@ class CreateJobs < ActiveRecord::Migration
       t.boolean :rainy_day, { default: false }
       t.integer :client_id, null: false
       t.integer :route_id
+      t.integer :employee_id
 
       t.timestamps null: false
     end

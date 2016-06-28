@@ -1,6 +1,7 @@
 class Job < ActiveRecord::Base
   belongs_to :client
   belongs_to :route
+  belongs_to :employee, class_name: "User"
   validates :name, :description, :frequency, :estimated_price, {presence: true}
   has_many :work_orders
 
