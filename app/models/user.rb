@@ -11,4 +11,10 @@ class User < ActiveRecord::Base
   validates :name, :email, :phone, :encrypted_password, {presence: true}
   validates :email, uniqueness: true
 
+  def sum_routes
+    total = 0
+    self.routes.each { |route| total += route.sum_jobs }
+    return total
+  end
+
 end

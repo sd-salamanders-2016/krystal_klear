@@ -36,15 +36,46 @@
     <tbody>
       <% @users.each do |user| %>
         <tr>
+      <% x = "pie" %>
           <td class="grid-td"><%= user.name %></td>
-          <td class='droppable'><%= user.routes[0].name if !user.routes[0].nil? %></td>
-          <td class='droppable'></td>
-          <td class='droppable'></td>
-          <td class='droppable'></td>
-          <td class='droppable'></td>
-          <td class='droppable'></td>
-          <td class='droppable'></td>
-          <td class='droppable'></td>
+          <td class='droppable'>
+            <% user.routes.each do |route| %>
+              <%= route.name + '    ' + route.sum_jobs.to_s if route.day == "monday" %>
+            <% end %> 
+          </td>
+          <td class='droppable'>
+            <% user.routes.each do |route| %>
+              <%= route.name + '    ' + route.sum_jobs.to_s if route.day == "tuesday" %>
+            <% end %>
+          </td>
+          <td class='droppable'>
+            <% user.routes.each do |route| %>
+              <%= route.name + '    ' + route.sum_jobs.to_s if route.day == "wednesday" %>
+            <% end %>
+          </td>
+          <td class='droppable'>
+            <% user.routes.each do |route| %>
+              <%= route.name + '    ' + route.sum_jobs.to_s if route.day == "thursday" %>
+            <% end %>
+          </td>
+          <td class='droppable'>
+            <% user.routes.each do |route| %>
+              <%= route.name + '    ' + route.sum_jobs.to_s if route.day == "friday" %>
+            <% end %>
+          </td>
+          <td class='droppable'>
+            <% user.routes.each do |route| %>
+              <%= route.name + '    ' + route.sum_jobs.to_s if route.day == "saturday" %>
+            <% end %>
+          </td>
+          <td class='droppable'>
+            <% user.routes.each do |route| %>
+              <%= route.name + '    ' + route.sum_jobs.to_s if route.day == "sunday" %>
+            <% end %>
+          </td>
+          <td class='droppable'>
+            $ <%= user.sum_routes %>
+          </td>
         </tr>
       <% end %>
     </tbody>
