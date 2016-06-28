@@ -5,7 +5,7 @@ class Job < ActiveRecord::Base
   has_many :work_orders
 
   def has_route?
-    !self.client_id.nil?
+    !self.route_id.nil?
   end
 
   def self.generate_work_order
