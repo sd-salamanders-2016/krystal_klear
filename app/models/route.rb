@@ -8,4 +8,12 @@ class Route < ActiveRecord::Base
 
   validates :name, presence: true
   validates :name, uniqueness: true
+
+  def sum_jobs
+    total = 0
+    this.jobs.each do |job|
+      total += job.estimated_price
+    end
+    return total
+  end
 end
