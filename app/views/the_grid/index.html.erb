@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="name-header">Weekly Schedule</h1>
+
+<div class="tests">
+  
+</div>
+<div class="grid-container">
+  <table class="grid-table">
+    <thead>
+      <tr class="grid-head">
+        <th class="grid-th">Employee</th>
+        <th>Monday</th>
+        <th>Tuesday</th>
+        <th>Wednesday</th>
+        <th>Thursday</th>
+        <th>Friday</th>
+        <th>Saturday</th>
+        <th>Sunday</th>
+      </tr>
+    </thead>
+  
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td class="grid-td"><%= user.name %></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
