@@ -1,6 +1,12 @@
 class EmployeeWorkorders < ActiveRecord::Migration
   def change
-    rename_table :employee_routes, :employee_work_orders
-    rename_column :employee_work_orders, :route_id, :work_order_id
+    create_table :employee_work_orders do |t|
+      t.integer :user_id, null: false
+      t.integer :work_order_id, null: false
+
+      t.timestamps null: false
+    end
   end
 end
+
+

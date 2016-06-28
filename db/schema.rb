@@ -35,19 +35,21 @@ ActiveRecord::Schema.define(version: 20160420212735) do
   end
 
   create_table "jobs", force: :cascade do |t|
-    t.string   "name",            null: false
-    t.string   "description",     null: false
+    t.string   "name",                            null: false
+    t.string   "description",                     null: false
     t.integer  "frequency"
-    t.float    "estimated_price", null: false
-    t.integer  "client_id",       null: false
+    t.float    "estimated_price",                 null: false
+    t.boolean  "rainy_day",       default: false
+    t.integer  "client_id",                       null: false
     t.integer  "route_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
   create_table "routes", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
+    t.integer  "employee_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
