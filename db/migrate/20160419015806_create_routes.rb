@@ -3,6 +3,8 @@ class CreateRoutes < ActiveRecord::Migration
     create_table :routes do |t|
       t.string :name
       t.text :description
+      t.string :day
+      t.integer :employee_id
 
       t.timestamps null: false
     end

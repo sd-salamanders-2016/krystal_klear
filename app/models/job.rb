@@ -4,11 +4,13 @@ class Job < ActiveRecord::Base
   validates :name, :description, :frequency, :estimated_price, {presence: true}
   has_many :work_orders
 
-# weeksFromNow = 0
+  def has_route?
+    !self.route_id.nil?
+  end
+
   def self.generate_work_order(weeksFromNow = 0);
     # find current week
     current_week = Time.now.strftime('%W').to_i + weeksFromNow
-    # loop through jobs
     jobs = Job.all
     jobs.each do |j|
       # find weeks since job was created
