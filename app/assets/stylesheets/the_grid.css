@@ -42,10 +42,9 @@
   background-color: #668cff;
 }
 
-.tests {
+.route {
   float: left;
   height: 500px;
   width: 23%;
   margin: 20px 0;
-  background-color: yellow;
 }

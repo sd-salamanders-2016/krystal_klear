@@ -66,4 +66,30 @@ nav li {
 }
 
 
+/*--------------- route tiles --------------*/
+.route-tile {
+  border: solid black 1px;
+  box-shadow: -2px 2px;
+}
+
+.png {
+  padding: 2px;
+  text-align: center;
+}
+
+.fa-sun-o {
+  text-align: center;
+  color: orange;
+}
+
+.fa-cloud {
+  text-align: center;
+  color: blue;
+}
+
+.route-amount {
+  text-align: center;
+  padding: 2px;
+}
+
 
