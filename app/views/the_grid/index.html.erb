@@ -2,9 +2,17 @@
 
 <h1 class="name-header">Week (put week # with ERB here)<%=  %> Schedule</h1>
 
+<div id="test-div">
+  <h3>Open Jobs</h3>
+  <% @independent_jobs.each do |job| %>
+  <p><%= job.name | job.estimated_price.round(2) %></p>
+  <% end %>
+</div>
+
+
 <div id='route-container'>
-  <% if @routes.any? %>
-    <% @routes.each do |route| %>
+  <% if @open_routes.any? %>
+    <% @open_routes.each do |route| %>
       <a href="/routes/<%= route.id %>">
         <div class="route">
           <table class='route-tile'>
@@ -16,8 +24,9 @@
             <td class='png'><i class='fa fa-cloud'></i></td>
           </tr>
           <tr>
-            <td class='route-amount'>$<%= Random.rand(200..300) %></td>
-            <td class='route-amount'>$<%= Random.rand(175..200) %></td>
+            <td class='route-amount'>$<%= route.sum_jobs.round(2) %></td>
+            <td class='route-amount'>$<%= route.sum_jobs.round(2) %></td>
+            <!-- SECOND ROUTE WILL BE REPLACED BY RAINY SUM -->
           </tr>
         </table>
         </div>
@@ -30,14 +39,15 @@
   <table class="grid-table">
     <thead>
       <tr class="grid-head">
-        <th class="grid-th fixed">Employee</th>
-        <th class='fixed'>Monday</th>
-        <th class='fixed'>Tuesday</th>
-        <th class='fixed'>Wednesday</th>
-        <th class='fixed'>Thursday</th>
-        <th class='fixed'>Friday</th>
-        <th class='fixed'>Saturday</th>
-        <th class='fixed'>Sunday</th>
+        <th class="grid-th">Employee</th>
+        <th>Monday</th>
+        <th>Tuesday</th>
+        <th>Wednesday</th>
+        <th>Thursday</th>
+        <th>Friday</th>
+        <th>Saturday</th>
+        <th>Sunday</th>
+        <th>Estimate Total</th>
       </tr>
     </thead>
 
@@ -45,13 +55,44 @@
       <% @users.each do |user| %>
         <tr>
           <td class="grid-td"><%= user.name %></td>
-          <td class='droppable'></td>
-          <td class='droppable'></td>
-          <td class='droppable'></td>
-          <td class='droppable'></td>
-          <td class='droppable'></td>
-          <td class='droppable'></td>
-          <td class='droppable'></td>
+          <td class='droppable'>
+            <% user.routes.each do |route| %>
+              <%= route.name + '    ' + route.sum_jobs.to_s if route.day == "monday" %>
+            <% end %> 
+          </td>
+          <td class='droppable'>
+            <% user.routes.each do |route| %>
+              <%= route.name + '    ' + route.sum_jobs.to_s if route.day == "tuesday" %>
+            <% end %>
+          </td>
+          <td class='droppable'>
+            <% user.routes.each do |route| %>
+              <%= route.name + '    ' + route.sum_jobs.to_s if route.day == "wednesday" %>
+            <% end %>
+          </td>
+          <td class='droppable'>
+            <% user.routes.each do |route| %>
+              <%= route.name + '    ' + route.sum_jobs.to_s if route.day == "thursday" %>
+            <% end %>
+          </td>
+          <td class='droppable'>
+            <% user.routes.each do |route| %>
+              <%= route.name + '    ' + route.sum_jobs.to_s if route.day == "friday" %>
+            <% end %>
+          </td>
+          <td class='droppable'>
+            <% user.routes.each do |route| %>
+              <%= route.name + '    ' + route.sum_jobs.to_s if route.day == "saturday" %>
+            <% end %>
+          </td>
+          <td class='droppable'>
+            <% user.routes.each do |route| %>
+              <%= route.name + '    ' + route.sum_jobs.to_s if route.day == "sunday" %>
+            <% end %>
+          </td>
+          <td class='droppable'>
+            $<%= user.sum_routes %>
+          </td>
         </tr>
       <% end %>
     </tbody>
