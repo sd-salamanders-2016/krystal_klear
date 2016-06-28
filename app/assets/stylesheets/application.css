@@ -15,10 +15,30 @@
  */
 
 body {
-  margin:5%;
+  margin:0px 5%;
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
   background-color: #e6e6e6;
+}
+
+#title-and-navbar {
+  position: fixed;
+  width: 90%;
+  top: 0px;
+  border: solid black 3px;
+  background-image: url(http://i.imgur.com/W3Da7VH.jpg);
+}
+
+#navbar-whitespace {
+  width: 91%;
+  height: 30px;
+  position: fixed;
+  margin-top: -62px;
+  background-color: #e6e6e6;
+}
+
+#content-container {
+  margin-top: 180px;
 }
 
 .company-title {
@@ -26,19 +46,34 @@ body {
   font-family: 'Lato', sans-serif;
   font-weight: 900;
   font-size: 30px;
-  background-color: #4d79ff;
-  padding: 10px;
+  color: cyan;
+  font-weight: 1300;
+  padding: 10px 0px 0px 10px;
   margin: 0px;
+  text-shadow: black -4px 1px;
+  letter-spacing: 3px;
 }
 
-#company-subtitle {
-  font-family: 'Lato', sans-serif;
-  font-weight: 300;
-  font-size: 25px;
+.navbar-text a {
+  color: white !important;
+  text-shadow: black -2px 1px;
+}
+
+.navbar-text:visited a {
+  color: white !important;
+  text-shadow: white -3px 2px;
+}
+
+.navbar-text:hover a {
+  color: blue;
+  text-shadow: black -4px 3px;
+}
+
+h1.company-title {
+  margin-bottom: 0px;
 }
 
 nav {
-  background-color: #ccddff;
   padding: 10px 0px;
 }
 
@@ -63,6 +98,41 @@ nav li {
   border-radius: 5px;
   margin-top: 15px;
   width: 50px;
+}
+
+
+/*--------------- route tiles --------------*/
+.route-tile {
+  border: solid black 1px;
+  box-shadow: -2px 2px;
+}
+
+.png {
+  padding: 2px;
+  text-align: center;
+}
+
+.fa-sun-o {
+  text-align: center;
+  color: orange;
+}
+
+.fa-cloud {
+  text-align: center;
+  color: blue;
+}
+
+.route-amount {
+  text-align: center;
+  padding: 2px;
+}
+
+.route-name {
+  font-size: .7em;
+}
+
+.route-amount {
+  font-size: .7em;
 }
 
 

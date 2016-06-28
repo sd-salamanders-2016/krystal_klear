@@ -14,18 +14,19 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-// $(function(){
-//   $( ".route" ).draggable({
-//     helper: "clone",
-//   });
 
-//   $( "#routes_list" ).droppable({
-//     accept: ".route",
-//     drop: function( event, ui ) {
-//       var clone = $(ui.draggable).clone()
-//       $(ui.draggable).remove();
-//     }
-//   });
+$(function(){
+  $("div.route").draggable({
+    helper: "clone",
+  });
+
+  $( ".droppable" ).droppable({
+    accept: ".route",
+    drop: function(event, ui){
+      alert("I'm in the mainframe!")
+    }
+  });
+});
 
 //   $( ".employee" ).droppable({
 //     accept: ".route",

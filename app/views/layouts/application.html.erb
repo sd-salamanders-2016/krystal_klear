@@ -10,13 +10,13 @@
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
   <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
   <script type="text/javascript" src="application.js"></script>
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 </head>
 <body>
-   <%= render 'layouts/header' %>
-   <p class="alert"><%= alert %></p>
-
-
-<%= yield %>
-
+  <%= render 'layouts/header' %>
+  <p class="alert"><%= alert %></p>
+  <div id='content-container'>
+    <%= yield %>
+  </div>
 </body>
 </html>

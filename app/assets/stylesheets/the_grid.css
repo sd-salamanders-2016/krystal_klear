@@ -1,7 +1,22 @@
+/*.grid-page-container {
+  position: absolute;
+  background-color: skyblue;
+  width: 90%;
+  height: 150%;
+}*/
+
 .grid-container {
   float: right;
-  width: 75%;
+  width: 89%;
   margin: 20px 0;
+  overflow: auto;
+  height: 800px;
+  border: solid black 3px;
+}
+
+.grid-header {
+  margin-top: 60px;
+  text-align: center;
 }
 
 .grid-table {
@@ -11,10 +26,15 @@
 }
 
 .grid-table td {
-    padding: 15px;
-    text-align: left;
-    border: 1px solid #000;
-    width: 40px;
+  padding: 15px;
+  text-align: left;
+  border: 1px solid #000;
+  width: 80px;
+  height: 60px;
+}
+
+.grid-table th {
+  border-right: 1px solid #668cff;
 }
 
 .grid-table tr:nth-child(even) {
@@ -25,10 +45,21 @@
   background-color: #668cff;
 }
 
-.tests {
-  float: left;
-  height: 50px;
-  width: 25px;
+#route-container {
+  width: 8%;
   margin: 20px 0;
-  background-color: yellow;
+  display: flex;
+  flex-direction: column;
+  border: solid black 3px;
+  float: left;
+  overflow: auto;
+  height: 800px;
+}
+
+#route-container a {
+  height: 100%;
+}
+
+.route {
+  margin: 10px;
 }
