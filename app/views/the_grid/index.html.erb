@@ -29,6 +29,7 @@
         <th>Friday</th>
         <th>Saturday</th>
         <th>Sunday</th>
+        <th>Estimate Total</th>
       </tr>
     </thead>
 
@@ -36,6 +37,7 @@
       <% @users.each do |user| %>
         <tr>
           <td class="grid-td"><%= user.name %></td>
+          <td class='droppable'></td>
           <td class='droppable'></td>
           <td class='droppable'></td>
           <td class='droppable'></td>
