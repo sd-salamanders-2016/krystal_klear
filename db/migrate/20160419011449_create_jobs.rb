@@ -5,6 +5,7 @@ class CreateJobs < ActiveRecord::Migration
       t.string :description, null: false
       t.integer :frequency
       t.float :estimated_price, null: false
+      t.boolean :rainy_day, { default: false }
       t.integer :client_id, null: false
       t.integer :route_id
 
