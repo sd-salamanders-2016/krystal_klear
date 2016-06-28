@@ -37,7 +37,7 @@
       <% @users.each do |user| %>
         <tr>
           <td class="grid-td"><%= user.name %></td>
-          <td class='droppable'></td>
+          <td class='droppable'><%= user.routes[0].name if !user.routes[0].nil? %></td>
           <td class='droppable'></td>
           <td class='droppable'></td>
           <td class='droppable'></td>
