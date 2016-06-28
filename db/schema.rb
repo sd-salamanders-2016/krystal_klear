@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20160420212735) do
     t.boolean  "rainy_day",       default: false
     t.integer  "client_id",                       null: false
     t.integer  "route_id"
+    t.integer  "employee_id"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
   end
