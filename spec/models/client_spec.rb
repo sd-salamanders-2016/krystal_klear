@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe Client do
-let(:client) { Client.new(business_name: 'Company', contact_email: 'Company@email.com', contact_phone: '123-456-789', street_address: 'Company st.', neighborhood: 'Company neighborhood', zip_code: '0000') }
+  let(:client) { Client.new(business_name: 'Company', contact_email: 'Company@email.com', contact_phone: '123-456-789', street_address: 'Company st.', neighborhood: 'Company neighborhood', zip_code: '0000') }
 
   it 'has a business name' do
     expect(client.business_name).to eq('Company')
