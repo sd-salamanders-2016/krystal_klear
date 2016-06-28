@@ -23,12 +23,24 @@ describe WorkOrder do
     expect(work_order.notes).to be_a String
   end
 
-  it 'has an assiged week' do
+  it 'has an assigned week' do
     expect(work_order.week).to be_a Integer
   end
 
   it 'has a default value of incomplete' do
     expect(work_order.complete).to eq 'incomplete'
+  end
+
+  it 'responds to incomplete? method' do
+    expect(work_order.incomplete?).to eq true
+  end
+
+  it 'responds to complete? method' do
+    expect(work_order.complete?).to eq false
+  end
+
+  it 'responds to passed? method' do
+    expect(work_order.passed?).to eq false
   end
 
 end
