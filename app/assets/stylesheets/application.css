@@ -183,6 +183,9 @@ nav li {
 }
 
 .clickme {
+  position: absolute;
+  bottom: 0;
+  right: 0;
   background-color: #3B6D9D;
   border: none;
   border-radius: 8px;
@@ -192,10 +195,65 @@ nav li {
   text-decoration: none;
   font-size: 11px;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-  display: block;
+  float: right;
   margin: auto 5% auto auto;
 }
 
 .clickme:hover{
   background-color: #7289AB;
 }
+
+@media screen and (max-width: 1720px) {
+    .route-name {
+      font-size: .6em;
+    }
+
+    .rain-amount {
+      font-size: .6em;
+    }
+
+    .route-amount {
+      font-size: .6em;
+    }
+}
+
+@media screen and (max-width: 1520px) {
+    .route-name {
+      font-size: .6em;
+      text-align: center;
+      width: 100%;
+    }
+
+    .rain-amount {
+      text-align: center;
+      border-top: solid black 1px;
+      width: 50%;
+    }
+
+    .route-amount {
+      text-align: center;
+      border-top: solid black 1px;
+      width: 50%;
+    }
+}
+
+@media screen and (max-width: 1320px) {
+    .route-name {
+      font-size: .6em;
+      text-align: center;
+      width: 100%;
+    }
+
+    .rain-amount {
+      text-align: center;
+      border-top: solid black 1px;
+      width: 50%;
+    }
+
+    .route-amount {
+      text-align: center;
+      border-top: solid black 1px;
+      width: 50%;
+    }
+}
+
