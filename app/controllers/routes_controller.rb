@@ -1,6 +1,7 @@
 class RoutesController < ApplicationController
   before_action :set_route, only: [:show, :edit, :update, :destroy]
   before_action :is_admin?, only: [:show, :index, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token
 
   # GET /routes
   # GET /routes.json
@@ -45,13 +46,22 @@ class RoutesController < ApplicationController
   # PATCH/PUT /routes/1
   # PATCH/PUT /routes/1.json
   def update
-    if params[:trigger].nil? == false]
+    if params[:trigger].nil? == false # This means the request MUST be AJAX in our circumstance
+      #this crazy logic actually works. We just need to update the total in the final column
+      #I'm also getting a crazy server error, but these changes are sticking. However, 
+      # return is a 500 and the data isn't auto-filling. But it is there for the sum...
       user_id = params[:user_id]
+      # the route needs to know what day it relates to as well.
       route_id = params[:id]
       @employee = User.find(user_id)
+      p @employee
       @route = Route.find(route_id)
+      p @route
       @route.employee = @employee
-
+      # @route.save
+      if request.xhr?
+        @employee.sum_routes.to_s
+      end
     else
     ## To keep the original logic, adding a trigger variable to AJAX request
     ## when coming from 'The Grid' to differentiate.

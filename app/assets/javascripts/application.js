@@ -16,6 +16,9 @@
 //= require_tree .
 
 $(document).on('page:change', function() {
+
+
+
   $("#route-container a").draggable({
     helper: "clone"
   });
@@ -25,18 +28,45 @@ $(document).on('page:change', function() {
       $(this).append(ui.draggable);
       var route_id = $(ui.draggable).find('.route-name').attr('id')
       var user_id = $(this).attr('id');
-      var destination = '/routes/' + route_id + '/edit';
+      var destination = '/routes/' + route_id;
+      // Add line to find day of the week to link to route as well.
       var data = { user_id: user_id, trigger: true };
-      // console.dir(data); 
+
+      //TEST CODE //
 
       var request = $.ajax({
-            method: "POST",
+            method: "PATCH",
+            // beforeSend: function(request) {
+            //   request.setRequestHeader("CSRFToken", getCookie('csrftoken'));
+            // },
             url: destination,
             data: data
           });
-      //     request.done(function(response){
-      //       console.log(response);
-      //     });
+
+      request.always(function(response){
+        // console.log(response);
+        $(this).find('.total').text("$2.00")
+      });
+
+
+ 
+//// ATTEMPT TO RETRIEVE TOKEN /////////////////
+  // function getCookie(name) {
+  //     var cookieValue = null;
+  //     if (document.cookie && document.cookie != '') {
+  //         var cookies = document.cookie.split(';');
+  //         for (var i = 0; i < cookies.length; i++) {
+  //             var cookie = jQuery.trim(cookies[i]);
+  //             // Does this cookie string begin with the name we want?
+  //             if (cookie.substring(0, name.length + 1) == (name + '=')) {
+  //                 cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+  //                 break;
+  //             }
+  //         }
+  //     }
+  //     return cookieValue;
+  // }
+         
 
     },
   });
