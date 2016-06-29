@@ -107,6 +107,7 @@ nav li {
 .route-tile {
   border: solid black 1px;
   box-shadow: -2px 2px;
+  background-color: #fff;
 }
 
 .png {
@@ -130,7 +131,10 @@ nav li {
 }
 
 .route-name {
+  padding: 4px;
   font-size: .7em;
+  text-align: center;
+  font-weight: bold;
 }
 
 .route-amount {

@@ -1,13 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<h1 class="name-header">Week (put week # with ERB here)<%=  %> Schedule</h1>
+<h1 class="name-header">Week 25<%=  %> Schedule</h1>
 
-<div id="test-div">
+<!-- <div id="test-div">
   <h3>Open Jobs</h3>
-  <% @independent_jobs.each do |job| %>
-  <p><%= job.name | job.estimated_price.round(2) %></p>
-  <% end %>
-</div>
+  <%# @independent_jobs.each do |job| %>
+  <p><%# job.name | job.estimated_price.round(2) %></p>
+  <%# end %>
+</div> -->
 
 
 <div id='route-container'>
@@ -15,20 +15,20 @@
     <% @open_routes.each do |route| %>
       <a href="/routes/<%= route.id %>">
         <div class="route">
-          <table class='route-tile'>
-          <tr>
-            <th class='route-name' colspan='2'><%= route.name %></th>
-          </tr>
-          <tr>
-            <td class='png'><i class='fa fa-sun-o'></i></td>
-            <td class='png'><i class='fa fa-cloud'></i></td>
-          </tr>
-          <tr>
-            <td class='route-amount'>$<%= route.sum_jobs.round(2) %></td>
-            <td class='route-amount'>$<%= route.sum_jobs.round(2) %></td>
+          <div class='route-tile'>
+          <div>
+            <div class='route-name' colspan='2'><%= route.name %></div>
+          </div>
+          <div>
+            <div class='png'><i class='fa fa-sun-o'></i></div>
+            <div class='route-amount p'>$<%= route.sum_jobs.round(0) %></div>
+          </div>
+          <div>
+            <div class='png'><i class='fa fa-cloud'></i></div>
+            <div class='route-amount'>$<%= route.sum_rainy.round(0) %></div>
             <!-- SECOND ROUTE WILL BE REPLACED BY RAINY SUM -->
-          </tr>
-        </table>
+          </div>
+        </div>
         </div>
       </a>
     <% end %>
@@ -47,50 +47,26 @@
         <th>Friday</th>
         <th>Saturday</th>
         <th>Sunday</th>
-        <th>Estimate Total</th>
+        <th>Projected Total</th>
       </tr>
     </thead>
 
     <tbody>
       <% @users.each do |user| %>
         <tr>
-          <td class="grid-td"><%= user.name %></td>
-          <td class='droppable'>
-            <% user.routes.each do |route| %>
-              <%= route.name + '    ' + route.sum_jobs.to_s if route.day == "monday" %>
-            <% end %> 
+          <td class="grid-td">
+
+            <a href="<%= employee_user_path(user) %>"> <%= user.name %> </a>
           </td>
-          <td class='droppable'>
-            <% user.routes.each do |route| %>
-              <%= route.name + '    ' + route.sum_jobs.to_s if route.day == "tuesday" %>
-            <% end %>
-          </td>
-          <td class='droppable'>
-            <% user.routes.each do |route| %>
-              <%= route.name + '    ' + route.sum_jobs.to_s if route.day == "wednesday" %>
-            <% end %>
-          </td>
-          <td class='droppable'>
-            <% user.routes.each do |route| %>
-              <%= route.name + '    ' + route.sum_jobs.to_s if route.day == "thursday" %>
-            <% end %>
-          </td>
-          <td class='droppable'>
-            <% user.routes.each do |route| %>
-              <%= route.name + '    ' + route.sum_jobs.to_s if route.day == "friday" %>
-            <% end %>
-          </td>
-          <td class='droppable'>
-            <% user.routes.each do |route| %>
-              <%= route.name + '    ' + route.sum_jobs.to_s if route.day == "saturday" %>
-            <% end %>
-          </td>
-          <td class='droppable'>
-            <% user.routes.each do |route| %>
-              <%= route.name + '    ' + route.sum_jobs.to_s if route.day == "sunday" %>
-            <% end %>
-          </td>
-          <td class='droppable'>
+          <% ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"].each do |day_str| %>
+            <td class='droppable' id="<%= user.id %>">
+              <% user.routes.each do |route| %>
+                <%= route.name + '    ' + route.sum_jobs.to_s if route.day == day_str %>
+              <% end %>
+            </td>
+          <% end %>
+
+          <td class="total">
             $<%= user.sum_routes %>
           </td>
         </tr>

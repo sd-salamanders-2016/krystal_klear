@@ -1,6 +1,7 @@
 class Job < ActiveRecord::Base
   belongs_to :client
   belongs_to :route
+  belongs_to :employee, class_name: "User"
   validates :name, :description, :frequency, :estimated_price, {presence: true}
   has_many :work_orders
 
@@ -31,7 +32,7 @@ class Job < ActiveRecord::Base
     end
   end
 
-  def self.generate_work_order
-    self.generate_work_order 1
+  def self.generate_next_weeks_work_order
+    Job.generate_work_order 1
   end
 end

@@ -17,29 +17,36 @@
 
 $(function(){
   $("#route-container a").draggable({
-    helper: "clone",
+    helper: "clone"
   });
 
   $( ".droppable" ).droppable({
-    accept: "a",
     drop: function(event, ui){
-      alert("I'm in the mainframe!")
-    }
+      $(this).append(ui.draggable);
+      var current_total = $(this).find('.total');
+      var somethingstupid = ui.draggable.clone();
+      var $row = $(ui.draggable).parent().parent();
+      var prices = $row.find('.p').text().split("$");
+      var priceNumbers = prices.map(function(e) {return Number(e)});
+      var sum = priceNumbers.reduce(function(c, t){return c + t})
+      console.log(sum);
+      $row.find(".total").html(`$${sum}`);
+    },
   });
+
+  $( "#route-container" ).droppable({
+    drop: function(event, ui){
+      var current_total = $(this).find('.total');
+      var somethingstupid = ui.draggable.clone();
+      var $row = $(ui.draggable).parent().parent();
+      var prices = $row.find('.p').text().split("$");
+      var priceNumbers = prices.map(function(e) {return Number(e)});
+      var sum = priceNumbers.reduce(function(c, t){return c + t});
+      console.log(sum);
+      $row.find(".total").html(`$${sum}`);
+      $(this).prepend(ui.draggable);
+    },
+  });
+
 });
 
-//   $( ".employee" ).droppable({
-//     accept: ".route",
-//     drop: function( event, ui ) {
-//       var clone = $(ui.draggable).clone()
-//       clone.appendTo('.employee :first-child');
-//       clone.draggable({
-//         helper: "clone",
-
-//       });
-//     }
-//   });
-// });
-
-
-// $("#mydiv div:first-child").after(newDiv);
