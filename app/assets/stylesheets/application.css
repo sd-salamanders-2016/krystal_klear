@@ -199,3 +199,46 @@ nav li {
 .clickme:hover{
   background-color: #7289AB;
 }
+
+@media screen and (max-width: 1720px) {
+    .route-name {
+      font-size: .6em;
+    }
+
+    .rain-amount {
+      font-size: .6em;
+    }
+
+    .route-amount {
+      font-size: .6em;
+    }
+}
+
+@media screen and (max-width: 1520px) {
+    .route-name {
+      font-size: .5em;
+    }
+
+    .rain-amount {
+      font-size: .5em;
+    }
+
+    .route-amount {
+      font-size: .5em;
+    }
+}
+
+@media screen and (max-width: 1320px) {
+    .route-name {
+      font-size: .4em;
+    }
+
+    .rain-amount {
+      font-size: .4em;
+    }
+
+    .route-amount {
+      font-size: .4em;
+    }
+}
+

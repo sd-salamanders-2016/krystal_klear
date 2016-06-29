@@ -65,10 +65,3 @@ td.grid-td {
   /*float: left;*/
   display: block;
 }
-
-@media screen and (max-width: 1520px) {
-    .route-name {
-      font-size: 5px;
-      color: red;
-    }
-}
