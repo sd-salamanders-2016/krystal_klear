@@ -59,16 +59,6 @@ class RoutesController < ApplicationController
         format.html { redirect_to "/", notice: 'Route was successfully updated.' }
         format.json { render :show, status: :ok, location: @route }
       end
-
-    elsif params[:trigger] == "false"
-      route_id = params[:id]
-      @employee = User.find_by(id: user_id)
-      @route = Route.find(route_id)
-      @route.employee = nil
-      @route.day = nil
-
-
-
     else
       ## To keep the original logic, adding a trigger variable to AJAX request
       ## when coming from 'The Grid' to differentiate.

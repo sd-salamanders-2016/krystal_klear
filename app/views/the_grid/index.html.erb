@@ -1,7 +1,9 @@
 <p id="notice"><%= notice %></p>
 
+
 <h1 class="name-header">Week <%# @open_routes.first.work_orders.first.week %> Schedule</h1>
 <div class="button-container">
+
 
   <div class="weather" style="width: 200px;"><iframe style="display: block;" src="http://cdnres.willyweather.com/widget/loadView.html?id=52742" width="200" height="82" frameborder="0" scrolling="no"></iframe><a style="position: relative;height: 20px;display: block;text-indent: -9999em;z-index: 1;margin: -20px 0 0 0" href="http://www.willyweather.com/ca/san-diego-county/mission-bay--sea-world-san-diego.html">http://www.willyweather.com/ca/san-diego-county/mission-bay--sea-world-san-diego.html</a></div>
 
@@ -13,7 +15,7 @@
   <% if @open_routes.any? %>
     <% @open_routes.each do |route| %>
       <a href="/routes/<%= route.id %>">
-        <div class="route">
+        <div class="route" percent="<%= route.rain_percent * 1.5 - 0.5 %>" >
           <div class='route-tile'>
             <div class='route-name' id="<%=route.id %>" colspan='2'><%= route.name %></div>
             <!-- <div class='png'><i class='fa fa-sun-o'></i></div> -->
