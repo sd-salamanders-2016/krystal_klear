@@ -236,7 +236,7 @@ nav li {
 
 @media screen and (max-width: 1320px) {
     .route-name {
-      font-size: .6em;
+      font-size: .5em;
       text-align: center;
       width: 100%;
     }
