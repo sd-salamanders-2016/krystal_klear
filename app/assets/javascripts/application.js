@@ -41,7 +41,7 @@ $(function(){
       var $row = $(ui.draggable).parent().parent();
       var prices = $row.find('.p').text().split("$");
       var priceNumbers = prices.map(function(e) {return Number(e)});
-      var sum = priceNumbers.reduce(function(c, t){return c + t})
+      var sum = priceNumbers.reduce(function(c, t){return c + t});
       console.log(sum);
       $row.find(".total").html(`$${sum}`);
       $(this).prepend(ui.draggable);

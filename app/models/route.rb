@@ -10,11 +10,7 @@ class Route < ActiveRecord::Base
   validates :name, uniqueness: true
 
   def sum_jobs
-    total = 0
-    self.jobs.each do |job|
-      total += job.estimated_price
-    end
-    return total
+    jobs.sum(:estimated_price)
   end
   def sum_rainy
     total = 0

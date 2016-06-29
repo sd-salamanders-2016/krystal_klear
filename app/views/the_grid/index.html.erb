@@ -59,7 +59,7 @@
             <a href="<%= employee_user_path(user) %>"> <%= user.name %> </a>
           </td>
           <% ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"].each do |day_str| %>
-            <td class='droppable'>
+            <td class='droppable' id="<%= user.id %>">
               <% user.routes.each do |route| %>
                 <%= route.name + '    ' + route.sum_jobs.to_s if route.day == day_str %>
               <% end %>

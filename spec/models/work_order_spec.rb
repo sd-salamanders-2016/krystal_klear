@@ -8,7 +8,7 @@ describe WorkOrder do
                                    week: 26)}
 
   it 'has a route_id' do
-    expect(work_order.route_id).to be_a Integer
+    expect(work_order.route_id).to eq 1
   end
 
   it 'has a job_id' do
