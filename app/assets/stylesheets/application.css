@@ -34,6 +34,7 @@ body {
   border: solid black 2px;
   border-top: none;
   background: url(cleanbanner.jpg) no-repeat center center;
+  z-index: 100;
 }
 
 #content-container {
@@ -239,7 +240,7 @@ nav li {
 
 @media screen and (max-width: 1320px) {
     .route-name {
-      font-size: .6em;
+      font-size: .5em;
       text-align: center;
       width: 100%;
     }
