@@ -16,7 +16,7 @@
 //= require_tree .
 $(document).on('page:change', function() {
 
-  $("#route-container a").draggable({
+  $("#route-container a, .grid-container a").draggable({
     helper: "clone",
     start: function() {
       originNode = this.parentElement;
@@ -79,5 +79,17 @@ $(document).on('page:change', function() {
       $('table.grid-table').find('th:nth-child(8), td:nth-child(8)').toggle();
     })
 
+});
+
+var rainShown = false;
+function toggleOpacity() {
+  $.each($('.route'), function( index, value ) {
+    if(rainShown) {
+      value.style.opacity = 1;
+    } else {
+      value.style.opacity = value.getAttribute("percent");
+    }
   });
+  rainShown = !rainShown;
+}
 
