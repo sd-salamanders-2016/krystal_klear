@@ -20,6 +20,10 @@ $(document).on('page:change', function() {
     helper: "clone"
   });
 
+  $(".grid-container a").draggable({
+    helper: "clone"
+  });
+
   $( ".droppable" ).droppable({
     drop: function(event, ui){
       $(this).append(ui.draggable);
