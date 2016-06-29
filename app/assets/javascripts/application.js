@@ -23,30 +23,61 @@ $(function(){
   $( ".droppable" ).droppable({
     drop: function(event, ui){
       $(this).append(ui.draggable);
-      var current_total = $(this).find('.total');
-      var somethingstupid = ui.draggable.clone();
-      var $row = $(ui.draggable).parent().parent();
-      var prices = $row.find('.p').text().split("$");
-      var priceNumbers = prices.map(function(e) {return Number(e)});
-      var sum = priceNumbers.reduce(function(c, t){return c + t})
-      console.log(sum);
-      $row.find(".total").html(`$${sum}`);
+      // var current_total = $(this).find('.total');
+      // var somethingstupid = ui.draggable.clone();
+      // var $row = $(ui.draggable).parent().parent();
+      // var prices = $row.find('.p').text().split("$");
+      // var priceNumbers = prices.map(function(e) {return Number(e)});
+      // var sum = priceNumbers.reduce(function(c, t){return c + t})
+      // console.log(sum);
+      // $row.find(".total").html(`$${sum}`);
     },
   });
 
   $( "#route-container" ).droppable({
     drop: function(event, ui){
-      var current_total = $(this).find('.total');
-      var somethingstupid = ui.draggable.clone();
-      var $row = $(ui.draggable).parent().parent();
-      var prices = $row.find('.p').text().split("$");
-      var priceNumbers = prices.map(function(e) {return Number(e)});
-      var sum = priceNumbers.reduce(function(c, t){return c + t});
-      console.log(sum);
-      $row.find(".total").html(`$${sum}`);
+      // var current_total = $(this).find('.total');
+      // var somethingstupid = ui.draggable.clone();
+      // var $row = $(ui.draggable).parent().parent();
+      // var prices = $row.find('.p').text().split("$");
+      // var priceNumbers = prices.map(function(e) {return Number(e)});
+      // var sum = priceNumbers.reduce(function(c, t){return c + t});
+      // console.log(sum);
+      // $row.find(".total").html(`$${sum}`);
       $(this).prepend(ui.draggable);
     },
   });
 
 });
+
+
+
+////////// ORIGINAL CONCEPT /////////////////////////////
+  // $( ".droppable" ).droppable({
+  //   drop: function(event, ui){
+  //     $(this).append(ui.draggable);
+  //     var current_total = $(this).find('.total');
+  //     var somethingstupid = ui.draggable.clone();
+  //     var $row = $(ui.draggable).parent().parent();
+  //     var prices = $row.find('.p').text().split("$");
+  //     var priceNumbers = prices.map(function(e) {return Number(e)});
+  //     var sum = priceNumbers.reduce(function(c, t){return c + t})
+  //     console.log(sum);
+  //     $row.find(".total").html(`$${sum}`);
+  //   },
+  // });
+
+  // $( "#route-container" ).droppable({
+  //   drop: function(event, ui){
+  //     var current_total = $(this).find('.total');
+  //     var somethingstupid = ui.draggable.clone();
+  //     var $row = $(ui.draggable).parent().parent();
+  //     var prices = $row.find('.p').text().split("$");
+  //     var priceNumbers = prices.map(function(e) {return Number(e)});
+  //     var sum = priceNumbers.reduce(function(c, t){return c + t});
+  //     console.log(sum);
+  //     $row.find(".total").html(`$${sum}`);
+  //     $(this).prepend(ui.draggable);
+  //   },
+  // });
 
