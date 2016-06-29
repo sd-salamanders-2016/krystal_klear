@@ -136,7 +136,7 @@ nav li {
   float:left;
   box-sizing: border-box;
   width: 21%;
-  background-color: yellow;
+  background-color: #FDE436;
   padding: 2px;
   display: inline-block;
   font-size: .7em;
@@ -148,7 +148,7 @@ nav li {
   float:left;
   box-sizing: border-box;
   width: 21%;
-  background-color: lightblue;
+  background-color: #2BBAED;
   padding: 2px;
   display: inline-block;
   font-size: .7em;
