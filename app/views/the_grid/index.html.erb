@@ -1,8 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<h1 class="name-header">Week <%= @open_routes.first.work_orders.first.week %> Schedule</h1>
+<h1 class="name-header">Week <%# @open_routes.first.work_orders.first.week %> Schedule</h1>
 <button class='clickme'>Toggle weekends on/off</button>
 <!-- <button class="clickme1">Rain Routes</button> -->
+
 
 <!-- <div id="test-div">
   <h3>Open Jobs</h3>
@@ -18,8 +19,8 @@
       <a href="/routes/<%= route.id %>">
         <div class="route">
           <div class='route-tile'>
-            <div class='route-name' colspan='2'><%= route.name %></div>
-            <!-- <div class='sun-png'><i class='fa fa-sun-o'></i></div> -->
+            <div class='route-name' id="<%=route.id %>" colspan='2'><%= route.name %></div>
+            <!-- <div class='png'><i class='fa fa-sun-o'></i></div> -->
             <div class='route-amount p'>$<%= route.sum_jobs.round(0) %></div>
             <!-- <div class='rain-png'><i class='fa fa-cloud'></i></div> -->
             <div class='rain-amount'>$<%= route.sum_rainy.round(0) %></div>
@@ -62,7 +63,7 @@
           <% end %>
 
           <td class="total">
-            <p>$<%= user.sum_routes %></p>
+            <p>$<%= user.sum_routes.round(0) %></p>
           </td>
         </tr>
       <% end %>
