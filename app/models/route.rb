@@ -16,4 +16,11 @@ class Route < ActiveRecord::Base
     end
     return total
   end
+  def sum_rainy
+    total = 0
+    self.jobs.each do |job|
+      total += job.estimated_price if job.rainy_day
+    end
+    return total
+  end
 end

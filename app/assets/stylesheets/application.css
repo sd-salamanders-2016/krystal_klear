@@ -14,7 +14,7 @@
  *= require_self
  */
 
-/*body {
+body {
   margin:0px 5%;
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
@@ -98,13 +98,14 @@ nav li {
   border-radius: 5px;
   margin-top: 15px;
   width: 50px;
-}*/
+}
 
 
 /*--------------- route tiles --------------*/
-/*.route-tile {
+.route-tile {
   border: solid black 1px;
   box-shadow: -2px 2px;
+  background-color: #fff;
 }
 
 .png {
@@ -128,12 +129,15 @@ nav li {
 }
 
 .route-name {
+  padding: 4px;
   font-size: .7em;
+  text-align: center;
+  font-weight: bold;
 }
 
 .route-amount {
   font-size: .7em;
-}*/
+}
 
 
 

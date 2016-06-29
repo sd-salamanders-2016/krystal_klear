@@ -60,6 +60,7 @@ end
     frequency: ['1','1','1','1','1','2','2','2','4','8','12'].sample,
     estimated_price: Faker::Commerce.price,
     client_id: rand(1..50),
-    route_id: rand(1..10)
+    route_id: rand(1..10),
+    rainy_day: rand < 0.7
     })
 end

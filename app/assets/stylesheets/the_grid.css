@@ -6,7 +6,7 @@
 }*/
 
 .grid-container {
-  /*float: right;*/
+  float: right;
   width: 89%;
   margin: 20px 0;
   overflow: auto;
@@ -54,10 +54,6 @@
   float: left;
   overflow: auto;
   height: 800px;
-}
-
-#route-container a {
-  /*height: 100%;*/
 }
 
 .route {

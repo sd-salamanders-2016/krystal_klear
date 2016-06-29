@@ -32,7 +32,7 @@ class Job < ActiveRecord::Base
     end
   end
 
-  def self.generate_work_order
-    self.generate_work_order 1
+  def self.generate_next_weeks_work_order
+    Job.generate_work_order 1
   end
 end
