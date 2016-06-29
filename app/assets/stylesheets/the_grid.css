@@ -61,6 +61,11 @@ td.grid-td {
   width: 50px;
 }
 
+.weather {
+  /*float: left;*/
+  display: block;
+}
+
 @media screen and (max-width: 1520px) {
     .route-name {
       font-size: 5px;
