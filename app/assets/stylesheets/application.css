@@ -29,7 +29,7 @@ body {
   float:left;
   border: solid black 2px;
   border-top: none;
-  background: image-url(cleanbanner.jpg) no-repeat center center;
+  background: image-url('cleanbanner.jpg') no-repeat center center;
 }
 
 #content-container {
