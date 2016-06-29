@@ -17,7 +17,10 @@
 $(document).on('page:change', function() {
 
   $("#route-container a").draggable({
-    helper: "clone"
+    helper: "clone",
+    start: function() {
+      originNode = this.parentElement;
+    }
   });
 
   $(".grid-container a").draggable({
@@ -50,7 +53,26 @@ $(document).on('page:change', function() {
   $( "#route-container" ).droppable({
     drop: function(event, ui){
       $(this).prepend(ui.draggable);
-    },
+
+      if(originNode.nodeName == "TD") {
+        var user_id = originNode.getAttribute('id');
+        var route_id = $(ui.draggable).find('.route-name').attr('id')
+        var destination = '/routes/' + route_id;
+
+        var request = $.ajax({
+              method: "PATCH",
+              url: destination,
+              data: { user_id: user_id, trigger: true, reset: true },
+              dataType: 'JSON'
+            });
+
+        var row = $(originNode).parent();
+        request.always(function(response){
+          row.children().last().html("<p>$" + Math.round(response.total) + "</p>");
+        });
+      }
+
+    }
   });
 
     $('table.grid-table').find('th:nth-child(7), td:nth-child(7)').hide();
