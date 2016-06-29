@@ -30,7 +30,7 @@ $(function(){
       var priceNumbers = prices.map(function(e) {return Number(e)});
       var sum = priceNumbers.reduce(function(c, t){return c + t})
       console.log(sum);
-      $row.find(".total").html(`$${sum}`);
+      $row.find(".total").html(`<p>$${sum}</p>`);
     },
   });
 
@@ -43,10 +43,18 @@ $(function(){
       var priceNumbers = prices.map(function(e) {return Number(e)});
       var sum = priceNumbers.reduce(function(c, t){return c + t});
       console.log(sum);
-      $row.find(".total").html(`$${sum}`);
+      $row.find(".total").html(`<p>$${sum}</p>`);
       $(this).prepend(ui.draggable);
     },
   });
+  $('table.grid-table').find('th:nth-child(7), td:nth-child(7)').hide()
+  $('table.grid-table').find('th:nth-child(8), td:nth-child(8)').hide()
+
+  $(".clickme").on("click", function(){
+    $('table.grid-table').find('th:nth-child(7), td:nth-child(7)').toggle()
+    $('table.grid-table').find('th:nth-child(8), td:nth-child(8)').toggle()
+  })
+
 
 });
 
