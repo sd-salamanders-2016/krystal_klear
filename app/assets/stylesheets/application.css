@@ -216,29 +216,41 @@ nav li {
 
 @media screen and (max-width: 1520px) {
     .route-name {
-      font-size: .5em;
+      font-size: .6em;
+      text-align: center;
+      width: 100%;
     }
 
     .rain-amount {
-      font-size: .5em;
+      text-align: center;
+      border-top: solid black 1px;
+      width: 50%;
     }
 
     .route-amount {
-      font-size: .5em;
+      text-align: center;
+      border-top: solid black 1px;
+      width: 50%;
     }
 }
 
 @media screen and (max-width: 1320px) {
     .route-name {
-      font-size: .4em;
+      font-size: .6em;
+      text-align: center;
+      width: 100%;
     }
 
     .rain-amount {
-      font-size: .4em;
+      text-align: center;
+      border-top: solid black 1px;
+      width: 50%;
     }
 
     .route-amount {
-      font-size: .4em;
+      text-align: center;
+      border-top: solid black 1px;
+      width: 50%;
     }
 }
 
