@@ -23,6 +23,7 @@ $(document).on('page:change', function() {
 
       // on pickup
       var tr = originNode.parentElement;
+      if(originNode.nodeName == "TD") {
       var total = Number(tr.children[tr.children.length - 1].textContent.trim().substring(1));
       // console.log("total =====" + total);
       var draggableValue = Number(originNode.children[0].children[0].children[0].children[1].textContent.substring(1));
@@ -31,6 +32,7 @@ $(document).on('page:change', function() {
       if(newValue < 0) newValue = 0;
       tr.children[tr.children.length - 1].innerHTML = "<p>$" + newValue + "</p>"
       console.log(newValue);
+    }
 
 
 
