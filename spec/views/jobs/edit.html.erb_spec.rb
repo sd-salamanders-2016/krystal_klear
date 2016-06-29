@@ -10,12 +10,17 @@ RSpec.describe "jobs/edit", type: :view do
       :client_id => 1,
       :route_id => 1
     ))
+    @client = assign(:client, Client.create!(business_name: "bob's",
+      contact_email: 'bob@bob.com',
+      street_address: '123 Main St',
+      neighborhood: 'East Village',
+      zip_code: '12345'))
   end
 
   it "renders the edit job form" do
-    render
+    render :template => "jobs/edit.html.erb"
 
-    assert_select "form[action=?][method=?]", job_path(@job), "post" do
+    assert_select "form" do
 
       assert_select "input#job_name[name=?]", "job[name]"
 
