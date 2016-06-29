@@ -205,7 +205,6 @@ PLATFORMS
 DEPENDENCIES
   byebug
   capybara
-  coffee-rails (~> 4.1.0)
   devise
   faker
   jbuilder (~> 2.0)
