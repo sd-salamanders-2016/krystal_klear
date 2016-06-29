@@ -16,15 +16,11 @@
 //= require_tree .
 $(document).on('page:change', function() {
 
-  $("#route-container a").draggable({
+  $("#route-container a, .grid-container a").draggable({
     helper: "clone",
     start: function() {
       originNode = this.parentElement;
     }
-  });
-
-  $(".grid-container a").draggable({
-    helper: "clone"
   });
 
   $( ".droppable" ).droppable({
