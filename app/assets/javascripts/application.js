@@ -20,13 +20,27 @@ $(document).on('page:change', function() {
     helper: "clone",
     start: function() {
       originNode = this.parentElement;
+
+      // on pickup
+      var tr = originNode.parentElement;
+      var total = Number(tr.children[tr.children.length - 1].textContent.trim().substring(1));
+      // console.log("total =====" + total);
+      var draggableValue = Number(originNode.children[0].children[0].children[0].children[1].textContent.substring(1));
+      // console.log("drag =====" + draggableValue);
+      var newValue = total - draggableValue;
+      if(newValue < 0) newValue = 0;
+      tr.children[tr.children.length - 1].innerHTML = "<p>$" + newValue + "</p>"
+      console.log(newValue);
+
+
+
     }
   });
 
   $( ".droppable" ).droppable({
     drop: function(event, ui){
       $(this).append(ui.draggable);
-      var route_id = $(ui.draggable).find('.route-name').attr('id')
+      var route_id = $(ui.draggable).find('.route-name').attr('id');
       var user_id = $(this).attr('id');
       var day = $(this).parents()[2].children[0].children[0].children[$(this).index()].textContent.toLowerCase();
       var destination = '/routes/' + route_id;
@@ -81,5 +95,41 @@ $(document).on('page:change', function() {
     })
 
 
-  });
+    $(".rain-route-btn").click(toggleOpacity);
 
+});
+
+var rainShown = false;
+function toggleOpacity() {
+  $.each($('.route'), function( index, value ) {
+    if(rainShown) {
+      value.style.opacity = 1;
+    } else {
+      value.style.opacity = value.getAttribute("percent");
+    }
+
+  });
+  rainShown = !rainShown;
+}
+
+
+function dasd() {
+  if(originNode.nodeName == "TD") {
+        var user_id = originNode.getAttribute('id');
+        var route_id = $(ui.draggable).find('.route-name').attr('id')
+        var destination = '/routes/' + route_id;
+      console.log(user_id);
+
+        var request = $.ajax({
+              method: "PATCH",
+              url: destination,
+              data: { user_id: user_id, trigger: true, reset: true },
+              dataType: 'JSON'
+            });
+
+        var row = $(originNode).parent();
+        request.always(function(response){
+          row.children().last().html("<p>$" + Math.round(response.total) + "</p>");
+        });
+      }
+}
