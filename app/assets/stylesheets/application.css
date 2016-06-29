@@ -26,7 +26,9 @@ body {
   width: 90%;
   top: 0px;
   border: solid gray 2px;
-  background-image: url(rainy-window2.png);
+  background: url(window_cleaning.jpg) no-repeat center center;
+  min-width: 1300px;
+  max-width: 1301px;
 }
 
 #navbar-whitespace {
