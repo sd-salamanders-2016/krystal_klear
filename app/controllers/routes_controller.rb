@@ -39,11 +39,22 @@ class RoutesController < ApplicationController
         format.json { render json: @route.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   # PATCH/PUT /routes/1
   # PATCH/PUT /routes/1.json
   def update
+    if params[:trigger].nil? == false]
+      user_id = params[:user_id]
+      route_id = params[:id]
+      @employee = User.find(user_id)
+      @route = Route.find(route_id)
+      @route.employee = @employee
+
+    else
+    ## To keep the original logic, adding a trigger variable to AJAX request
+    ## when coming from 'The Grid' to differentiate.
     employee_id = params[:route][:employee_ids][1..-1]
     employee_id.each do |id|
       @route.employees << User.find_by(id: id)
@@ -56,6 +67,7 @@ class RoutesController < ApplicationController
         format.html { render :edit }
         format.json { render json: @route.errors, status: :unprocessable_entity }
       end
+    end
     end
   end
 

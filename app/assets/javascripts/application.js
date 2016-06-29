@@ -15,7 +15,7 @@
 //= require turbolinks
 //= require_tree .
 
-$(function(){
+$(document).on('page:change', function() {
   $("#route-container a").draggable({
     helper: "clone"
   });
@@ -23,27 +23,26 @@ $(function(){
   $( ".droppable" ).droppable({
     drop: function(event, ui){
       $(this).append(ui.draggable);
-      // var current_total = $(this).find('.total');
-      // var somethingstupid = ui.draggable.clone();
-      // var $row = $(ui.draggable).parent().parent();
-      // var prices = $row.find('.p').text().split("$");
-      // var priceNumbers = prices.map(function(e) {return Number(e)});
-      // var sum = priceNumbers.reduce(function(c, t){return c + t})
-      // console.log(sum);
-      // $row.find(".total").html(`$${sum}`);
+      var route_id = $(ui.draggable).find('.route-name').attr('id')
+      var user_id = $(this).attr('id');
+      var destination = '/routes/' + route_id + '/edit';
+      var data = { user_id: user_id, trigger: true };
+      // console.dir(data); 
+
+      var request = $.ajax({
+            method: "POST",
+            url: destination,
+            data: data
+          });
+      //     request.done(function(response){
+      //       console.log(response);
+      //     });
+
     },
   });
 
   $( "#route-container" ).droppable({
     drop: function(event, ui){
-      // var current_total = $(this).find('.total');
-      // var somethingstupid = ui.draggable.clone();
-      // var $row = $(ui.draggable).parent().parent();
-      // var prices = $row.find('.p').text().split("$");
-      // var priceNumbers = prices.map(function(e) {return Number(e)});
-      // var sum = priceNumbers.reduce(function(c, t){return c + t});
-      // console.log(sum);
-      // $row.find(".total").html(`$${sum}`);
       $(this).prepend(ui.draggable);
     },
   });
@@ -52,7 +51,7 @@ $(function(){
 
 
 
-////////// ORIGINAL CONCEPT /////////////////////////////
+////////// ORIGINAL CONCEPT /////////////////////////////   
   // $( ".droppable" ).droppable({
   //   drop: function(event, ui){
   //     $(this).append(ui.draggable);
