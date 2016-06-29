@@ -25,15 +25,17 @@ body {
   position: fixed;
   width: 90%;
   top: 0px;
-  border: solid black 3px;
-  background-image: url(http://i.imgur.com/W3Da7VH.jpg);
+  border: solid gray 2px;
+  background: url(window_cleaning.jpg) no-repeat center center;
+  min-width: 1300px;
+  max-width: 1301px;
 }
 
 #navbar-whitespace {
   width: 91%;
   height: 30px;
   position: fixed;
-  margin-top: -62px;
+  margin-top: -64px;
   background-color: #e6e6e6;
 }
 
@@ -46,27 +48,27 @@ body {
   font-family: 'Lato', sans-serif;
   font-weight: 900;
   font-size: 30px;
-  color: cyan;
+  color: black;
   font-weight: 1300;
   padding: 10px 0px 0px 10px;
   margin: 0px;
-  text-shadow: black -4px 1px;
+  text-shadow: grey -2px 1px;
   letter-spacing: 3px;
 }
 
 .navbar-text a {
-  color: white !important;
-  text-shadow: black -2px 1px;
+  color: blue !important;
+  text-shadow: grey -1px 1px;
 }
 
 .navbar-text:visited a {
-  color: white !important;
-  text-shadow: white -3px 2px;
+  color: blue !important;
+  text-shadow: grey -1px 1px;
 }
 
 .navbar-text:hover a {
   color: blue;
-  text-shadow: black -4px 3px;
+  text-shadow: black -1px 1px;
 }
 
 h1.company-title {

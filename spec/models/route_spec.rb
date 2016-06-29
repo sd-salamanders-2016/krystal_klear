@@ -18,15 +18,15 @@ describe Route do
   end
 
   it 'returns a sum for all the jobs that it owns' do
+    route.save
     route.jobs << Job.new(name: '707 Broadway',
                           description: '1st floor windows facing Broadway',
-                          frequency: 2,
+                          frequency: 1,
                           estimated_price: 10.00,
                           rainy_day: false,
-                          client_id: 1,
-                          route_id: 1)
+                          client_id: 1)
 
-    expect(route.sum_jobs).to eq 10.00
+    expect(route.sum_jobs).to eq 10.0
   end
 
 end
