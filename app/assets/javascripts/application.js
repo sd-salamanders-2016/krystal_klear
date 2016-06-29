@@ -65,6 +65,7 @@ $(document).on('page:change', function() {
         var row = $(originNode).parent();
         request.always(function(response){
           row.children().last().html("<p>$" + Math.round(response.total) + "</p>");
+          console.log(response);
         });
       }
 
