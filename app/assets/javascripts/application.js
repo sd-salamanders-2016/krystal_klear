@@ -80,5 +80,6 @@ $(document).on('page:change', function() {
       $('table.grid-table').find('th:nth-child(8), td:nth-child(8)').toggle();
     })
 
+
   });
 
