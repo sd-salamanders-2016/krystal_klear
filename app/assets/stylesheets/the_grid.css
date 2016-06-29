@@ -1,13 +1,6 @@
-/*.grid-page-container {
-  position: absolute;
-  background-color: skyblue;
-  width: 90%;
-  height: 150%;
-}*/
-
 .grid-container {
   float: right;
-  width: 89%;
+  width: 84%;
   margin: 20px 0;
   overflow: auto;
   height: 800px;
@@ -26,9 +19,9 @@
 }
 
 .grid-table td {
-  padding: 15px;
+  padding: 10px 0;
   text-align: left;
-  border: 1px solid #000;
+  border: 2px solid #000;
   width: 80px;
   height: 60px;
 }
@@ -43,20 +36,34 @@
 
 .grid-table .grid-head {
   background-color: #668cff;
+  color: lightblue;
+  text-shadow: black -2px 2px;
 }
 
-#route-container {
-  width: 8%;
-  margin: 20px 0;
-  display: flex;
-  flex-direction: column;
-  border: solid black 3px;
-  float: left;
-  overflow: auto;
-  height: 800px;
+.grid-td a {
+  font-weight: bold;
 }
 
-.route {
-  margin: 10px;
+td.grid-td {
+  text-align: center;
 }
 
+.total p{
+  text-align: center;
+  font-weight: bold;
+}
+
+.grid-table td:nth-child(9){
+  width: 50px;
+}
+
+.grid-table th:nth-child(9){
+  width: 50px;
+}
+
+@media screen and (max-width: 1520px) {
+    .route-name {
+      font-size: 5px;
+      color: red;
+    }
+}

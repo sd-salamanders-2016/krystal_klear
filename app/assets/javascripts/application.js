@@ -14,10 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-
 $(document).on('page:change', function() {
-
-
 
   $("#route-container a").draggable({
     helper: "clone"
@@ -41,7 +38,7 @@ $(document).on('page:change', function() {
           });
 
       request.always(function(response){
-        row.children().last().text("$" + Math.round(response.total));
+        row.children().last().html("<p>$" + Math.round(response.total) + "</p>");
       });
     },
   });
@@ -52,5 +49,13 @@ $(document).on('page:change', function() {
     },
   });
 
-});
+    $('table.grid-table').find('th:nth-child(7), td:nth-child(7)').hide();
+    $('table.grid-table').find('th:nth-child(8), td:nth-child(8)').hide();
+
+    $(".clickme").on("click", function(){
+      $('table.grid-table').find('th:nth-child(7), td:nth-child(7)').toggle();
+      $('table.grid-table').find('th:nth-child(8), td:nth-child(8)').toggle();
+    })
+
+  });
 
