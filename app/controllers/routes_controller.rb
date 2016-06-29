@@ -48,36 +48,42 @@ class RoutesController < ApplicationController
   def update
     if params[:trigger].nil? == false # This means the request MUST be AJAX in our circumstance
       #this crazy logic actually works. We just need to update the total in the final column
-      #I'm also getting a crazy server error, but these changes are sticking. However, 
+      #I'm also getting a crazy server error, but these changes are sticking. However,
       # return is a 500 and the data isn't auto-filling. But it is there for the sum...
       user_id = params[:user_id]
       # the route needs to know what day it relates to as well.
       route_id = params[:id]
+      day = params[:day]
       @employee = User.find(user_id)
       p @employee
       @route = Route.find(route_id)
       p @route
       @route.employee = @employee
-      # @route.save
-      if request.xhr?
-        @employee.sum_routes.to_s
-      end
-    else
-    ## To keep the original logic, adding a trigger variable to AJAX request
-    ## when coming from 'The Grid' to differentiate.
-    employee_id = params[:route][:employee_ids][1..-1]
-    employee_id.each do |id|
-      @route.employees << User.find_by(id: id)
-    end
-    respond_to do |format|
-      if @route.update(route_params)
+      @route.day = day
+      @route.save
+      # if request.xhr?
+        # @employee.sum_routes.to_s
+      # end
+      respond_to do |format|
         format.html { redirect_to "/", notice: 'Route was successfully updated.' }
         format.json { render :show, status: :ok, location: @route }
-      else
-        format.html { render :edit }
-        format.json { render json: @route.errors, status: :unprocessable_entity }
       end
-    end
+    else
+      ## To keep the original logic, adding a trigger variable to AJAX request
+      ## when coming from 'The Grid' to differentiate.
+      employee_id = params[:route][:employee_ids][1..-1]
+      employee_id.each do |id|
+        @route.employees << User.find_by(id: id)
+      end
+      respond_to do |format|
+        if @route.update(route_params)
+          format.html { redirect_to "/", notice: 'Route was successfully updated.' }
+          format.json { render :show, status: :ok, location: @route }
+        else
+          format.html { render :edit }
+          format.json { render json: @route.errors, status: :unprocessable_entity }
+        end
+      end
     end
   end
 

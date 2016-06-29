@@ -28,46 +28,21 @@ $(document).on('page:change', function() {
       $(this).append(ui.draggable);
       var route_id = $(ui.draggable).find('.route-name').attr('id')
       var user_id = $(this).attr('id');
+      var day = $(this).parents()[2].children[0].children[0].children[$(this).index()].textContent.toLowerCase();
       var destination = '/routes/' + route_id;
-      // Add line to find day of the week to link to route as well.
-      var data = { user_id: user_id, trigger: true };
-
-      //TEST CODE //
+      var data = { user_id: user_id, trigger: true, day: day };
+      var row = $(this).parent();
 
       var request = $.ajax({
             method: "PATCH",
-            // beforeSend: function(request) {
-            //   request.setRequestHeader("CSRFToken", getCookie('csrftoken'));
-            // },
             url: destination,
-            data: data
+            data: data,
+            dataType: 'JSON'
           });
 
       request.always(function(response){
-        // console.log(response);
-        $(this).find('.total').text("$2.00")
+        row.children().last().text("$" + Math.round(response.total));
       });
-
-
- 
-//// ATTEMPT TO RETRIEVE TOKEN /////////////////
-  // function getCookie(name) {
-  //     var cookieValue = null;
-  //     if (document.cookie && document.cookie != '') {
-  //         var cookies = document.cookie.split(';');
-  //         for (var i = 0; i < cookies.length; i++) {
-  //             var cookie = jQuery.trim(cookies[i]);
-  //             // Does this cookie string begin with the name we want?
-  //             if (cookie.substring(0, name.length + 1) == (name + '=')) {
-  //                 cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-  //                 break;
-  //             }
-  //         }
-  //     }
-  //     return cookieValue;
-  // }
-         
-
     },
   });
 
@@ -78,35 +53,4 @@ $(document).on('page:change', function() {
   });
 
 });
-
-
-
-////////// ORIGINAL CONCEPT /////////////////////////////   
-  // $( ".droppable" ).droppable({
-  //   drop: function(event, ui){
-  //     $(this).append(ui.draggable);
-  //     var current_total = $(this).find('.total');
-  //     var somethingstupid = ui.draggable.clone();
-  //     var $row = $(ui.draggable).parent().parent();
-  //     var prices = $row.find('.p').text().split("$");
-  //     var priceNumbers = prices.map(function(e) {return Number(e)});
-  //     var sum = priceNumbers.reduce(function(c, t){return c + t})
-  //     console.log(sum);
-  //     $row.find(".total").html(`$${sum}`);
-  //   },
-  // });
-
-  // $( "#route-container" ).droppable({
-  //   drop: function(event, ui){
-  //     var current_total = $(this).find('.total');
-  //     var somethingstupid = ui.draggable.clone();
-  //     var $row = $(ui.draggable).parent().parent();
-  //     var prices = $row.find('.p').text().split("$");
-  //     var priceNumbers = prices.map(function(e) {return Number(e)});
-  //     var sum = priceNumbers.reduce(function(c, t){return c + t});
-  //     console.log(sum);
-  //     $row.find(".total").html(`$${sum}`);
-  //     $(this).prepend(ui.draggable);
-  //   },
-  // });
 
