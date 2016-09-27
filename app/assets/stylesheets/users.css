@@ -9,12 +9,14 @@
 }
 
 .incomplete-orders {
+  border: 2px solid red;
   display: inline-block;
   margin: 10px;
   margin-right: 0;
 }
 
 .complete-orders {
+  border: 2px solid red;
   max-width: 500px;
   display: inline-block;
   margin: 10px;
@@ -22,6 +24,7 @@
 }
 
 .passed-orders {
+  border: 2px solid red;
   max-width: 500px;
   /*display: inline-block;*/
   margin: 10px;
@@ -52,77 +55,8 @@
   width: 130px;
 }
 
-#hamburger-btn {
-  display: none;
-}
-
-#mobile-menu {
-  display: none;
-  /*display: block;*/
-  position: absolute;
-  width: 300px;
-  height: 100%;
-  background-color: black;
-  opacity: 0.8;
-  z-index: 1;
-}
-
-
-#mobile-menu span {
-  padding: 30px;
-  display: none;
-  color: grey;
-  font-size: 2em;
-  border-bottom: 3px solid white;
-  margin-bottom: 3px;
-
-  /*padding: 50px;*/
-}
-
-#mobile-menu span:hover {
-  background-color: white;
-}
-
-.user-name-display {
-  background-color: lightblue;
-  opacity: 1.0;
-  padding: 30px;
-  display: block;
-  color: grey;
-  font-size: 2em;
-  border-bottom: 3px solid white;
-  margin-bottom: 3px;
-  width: 300px;
-}
-
-@media (max-width: 600px){
-  #sign-out{
-    display: hide;
-  }
-}
-
 @media (max-width: 700px){
-  #hamburger-btn{
-    position: absolute;
-    display:block;
-    z-index: 2;
-  }
-}
-
-@media screen and (max-width: 700px){
-  .employee-mobile {
-    display: block;
-  }
-}
-
-@media (max-width: 700px){
-  .passed-orders, .sign-out-link {
-    display: none;
-  }
-}
-
-@media (max-width: 700px){
-  .complete-orders {
+  .complete-orders, .passed-orders, .sign-out-link {
     display: none;
   }
 }

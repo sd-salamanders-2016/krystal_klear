@@ -1,4 +1,4 @@
-$(document).on('page:change', function() {
+$(document).ready(function() {
 
   $("#route-container a, .grid-container a").draggable({
     helper: "clone",
