@@ -14,9 +14,13 @@
  *= require_self
  */
 
+
 * {
   margin: 0;
 }
+
+.form-inline, .form-inline div { display: inline-block }
+
 
  .hidden {
   display: none;
