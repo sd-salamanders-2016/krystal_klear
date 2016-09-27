@@ -24,9 +24,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    unless @user == current_user || is_admin?
-      redirect_to "/"
-    end
+      redirect_to "/" unless @user == current_user || is_admin?
   end
 
   # GET /users/new
