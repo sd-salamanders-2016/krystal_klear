@@ -9,6 +9,18 @@ class Job < ActiveRecord::Base
     !self.route_id.nil?
   end
 
+  def date_of_next(day)
+    date  = Date.parse(day)
+    delta = date > Date.today ? 0 : 7
+    date = date + delta
+    Time.parse(date.to_s)
+  end
+
+  def generate_random_time
+    finish = self.date_of_next('saturday')
+    Time.at((finish.to_f - Time.now.to_f)*rand + Time.now.to_f)
+  end
+
   def self.generate_work_order(weeksFromNow = 0);
     # find current week
     current_week = Time.now.strftime('%W').to_i + weeksFromNow
@@ -26,6 +38,7 @@ class Job < ActiveRecord::Base
           # create new work_order for job
           worder = WorkOrder.new(job_id: j.id, route_id: j.route_id)
           worder.week = current_week
+          worder.washing_datetime = Job.new.generate_random_time
           worder.save
         end
       end

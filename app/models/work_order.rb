@@ -4,6 +4,9 @@ class WorkOrder < ActiveRecord::Base
   has_many :employee_work_orders
   has_many :employees, through: :employee_work_orders, source: :user
 
+  def weekday
+    self.washing_datetime.strftime('%A')
+  end
 
   def incomplete?
     self.complete == "incomplete"
