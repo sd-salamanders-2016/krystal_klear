@@ -4,20 +4,20 @@
 
 <div class="incomplete-orders">
   <h3>Incomplete Work Orders</h3>
-  <ul>
   <% @user.current_week_routes.distinct.each do |route| %>
-    <h4><%= route.name %></h4>
+    <h4>Route: <%= route.name %></h4>
     <table>
       <tr>
         <th>Job Name</th>
-        <th>Estimated Price</th>
-        <th>Complete</th>
+        <th>Final Price</th>
+        <th> </th>
+        <th> </th>
+        <th> </th>
       </tr>
     <% route.current_week_work_orders.where(complete: 'incomplete').each do |wo|  %>
       <tr>
         <td><%= link_to "#{wo.job.name}", work_order_path(wo)  %></td>
-        <td><%= wo.job.estimated_price  %></td>
-        <td><%= render partial: "work_orders/done_form", locals: { wo: wo } %></td>
+        <td><%= render partial: "work_orders/new_form", locals: { wo: wo } %></td>
       </tr>
       <% end %>
     </table>
@@ -25,6 +25,7 @@
   </ul>
 </div>
 
+<% if current_user.admin? %>
 <div class="complete-orders">
   <h3>Complete Work Orders</h3>
   <ul>
@@ -66,5 +67,5 @@
     <% end %>
   </ul>
 </div>
-
+<% end %>
 </div>
