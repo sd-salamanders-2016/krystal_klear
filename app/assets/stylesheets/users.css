@@ -9,12 +9,14 @@
 }
 
 .incomplete-orders {
+  border: 2px solid red;
   display: inline-block;
   margin: 10px;
   margin-right: 0;
 }
 
 .complete-orders {
+  border: 2px solid red;
   max-width: 500px;
   display: inline-block;
   margin: 10px;
@@ -22,6 +24,7 @@
 }
 
 .passed-orders {
+  border: 2px solid red;
   max-width: 500px;
   /*display: inline-block;*/
   margin: 10px;
