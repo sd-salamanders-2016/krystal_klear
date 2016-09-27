@@ -13,14 +13,24 @@
  *= require_tree .
  *= require_self
  */
+ .bottom-border {
+  border-bottom: 2px dotted navy;
+ }
 
+ div.form-actions{
+  display: block;
+  width: 90%;
+ }
+
+ .conatianer{
+  margin: 0;
+ }
 
 * {
   margin: 0;
 }
 
 .form-inline, .form-inline div { display: inline-block }
-
 
  .hidden {
   display: none;

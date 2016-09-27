@@ -12,66 +12,60 @@
 
 <div id="overlay-view">
 
-<h2 class="name-header"><%= @user.name %></h2>
 <% current_week = Time.now.strftime('%W').to_i %>
 
-
+<div class="container-fluid">
+  <% @user.current_week_routes.distinct.each do |route| %>
 <div class="incomplete-orders">
   <h3>Incomplete Work Orders</h3>
-  <% @user.current_week_routes.distinct.each do |route| %>
-    <h4>Route: <%= route.name %></h4>
-    <table>
-      <tr>
-        <th>Job Name</th>
-        <th>Final Price</th>
-        <th> </th>
-        <th> </th>
-        <th> </th>
-      </tr>
-    <% route.current_week_work_orders.where(complete: 'incomplete').each do |wo|  %>
-      <tr>
-        <td><%= link_to "#{wo.job.name}", work_order_path(wo)  %></td>
-        <td><%= render partial: "work_orders/new_form", locals: { wo: wo } %></td>
-      </tr>
+
+    <div class="row">
+      <div class="col-xs-2"><p>Route</p></div>
+      <div class="col-xs-4"><p>Job Name</p></div>
+      <div class="col-xs-2"><p>Price</p></div>
+      <div class="col-xs-4"><p></p></div>
+    </div>
+
+    <div class="row">
+      <% route.current_week_work_orders.where(complete: 'incomplete').each do |wo|  %>
+      <div class="col-xs-2"><p><%= wo.route.id %></p></div>
+      <div class="col-xs-4"><p><%= link_to "#{wo.job.name}", work_order_path(wo)  %></p></div>
+      <div class="col-xs-2"><p><%= wo.job.estimated_price %></p></div>
+      <div class="col-xs-4"><%= render partial: "work_orders/done_form", locals: { wo: wo } %></div>
       <% end %>
-    </table>
-    <% end %>
-  </ul>
+    </div>
 </div>
 
 <% if current_user.admin? %>
 <div class="complete-orders">
   <h3>Complete Work Orders</h3>
   <ul>
-  <% @user.current_week_routes.distinct.each do |route| %>
-    <h4><%= route.name %></h4>
+    <% route.current_week_work_orders.where(complete: 'complete').each do |wo|  %>
+    <h4><%= wo.route.id %></h4>
     <table>
       <tr>
         <th>Job Name</th>
         <th>Final Price</th>
       </tr>
-    <% route.current_week_work_orders.where(complete: 'complete').each do |wo|  %>
       <tr>
         <td><%= link_to "#{wo.job.name}", work_order_path(wo)  %></td>
         <td><%= wo.final_price  %></td>
       </tr>
       <% end %>
     </table>
-    <% end %>
   </ul>
 </div>
 
 <div class="passed-orders">
   <h3>Customer Pass Work Orders</h3>
   <ul>
-  <% @user.current_week_routes.distinct.each do |route| %>
-    <h4><%= route.name %></h4>
+    <% route.current_week_work_orders.where(complete: 'pass').each do |wo|  %>
+    <h4><%= wo.route.id %></h4>
     <table>
       <tr>
         <th>Job Name</th>
         <th>Estimated Price</th>
       </tr>
-    <% route.current_week_work_orders.where(complete: 'pass').each do |wo|  %>
       <tr>
         <td><%= link_to "#{wo.job.name}", work_order_path(wo)  %></td>
         <td><%= wo.job.estimated_price  %></td>
@@ -84,4 +78,5 @@
 
 <% end %>
 
+</div>
 </div>

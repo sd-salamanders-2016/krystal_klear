@@ -57,6 +57,7 @@
 }
 
 #mobile-menu {
+  display: none;
   /*display: block;*/
   position: absolute;
   width: 300px;
@@ -69,7 +70,7 @@
 
 #mobile-menu span {
   padding: 30px;
-  display: block;
+  display: none;
   color: grey;
   font-size: 2em;
   border-bottom: 3px solid white;
