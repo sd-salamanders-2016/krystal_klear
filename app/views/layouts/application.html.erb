@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head name='viewport' content='width=device-width,initial-scale=1'>
   <title>KrystalKlear</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link href='https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -11,6 +12,8 @@
   <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
   <script type="text/javascript" src="application.js"></script>
+  <style> .glyphicon-menu-hamburger { cursor:pointer } </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
 </head>
 <body>
@@ -18,6 +21,7 @@
     <p class="alert"><%= alert %></p>
     <div id='content-container'>
       <%= yield %>
+      <div id='content-container-overlay'></div>
     </div>
 </body>
 </html>
