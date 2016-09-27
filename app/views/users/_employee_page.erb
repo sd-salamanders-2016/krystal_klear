@@ -1,6 +1,5 @@
 <h2 class="name-header"><%= @user.name %></h2>
-<p>Week: <%= current_week = Time.now.strftime('%W').to_i %></p>
-<p>Admin Status: <%= @user.admin%></p>
+<% current_week = Time.now.strftime('%W').to_i %>
 <div class="orders-container">
 
 <div class="incomplete-orders">
