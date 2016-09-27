@@ -1,16 +1,16 @@
-<button id="hamburger-btn" type="button" class="btn btn-default" aria-label="Left Align">
+<!-- <button id="hamburger-btn" type="button" class="btn btn-default" aria-label="Left Align">
   <span class="glyphicon glyphicon-menu-hamburger"></span>
-</button>
+</button> -->
 
-<div class="user-name-display"><%= @user.name %></div>
+<!-- <div class="user-name-display"><%= @user.name %></div>
 <div id="mobile-menu">
   <span>Incomplete</span>
   <span>Complete</span>
   <span>Pass</span>
   <span>Sign Out</span>
-</div>
+</div> -->
 
-<div id="overlay-view">
+
 
 <h2 class="name-header"><%= @user.name %></h2>
 <% current_week = Time.now.strftime('%W').to_i %>
@@ -24,9 +24,7 @@
       <tr>
         <th>Job Name</th>
         <th>Final Price</th>
-        <th> </th>
-        <th> </th>
-        <th> </th>
+
       </tr>
     <% route.current_week_work_orders.where(complete: 'incomplete').each do |wo|  %>
       <tr>
@@ -39,7 +37,6 @@
   </ul>
 </div>
 
-<% if current_user.admin? %>
 <div class="complete-orders">
   <h3>Complete Work Orders</h3>
   <ul>
@@ -80,8 +77,4 @@
     </table>
     <% end %>
   </ul>
-</div>
-
-<% end %>
-
 </div>
