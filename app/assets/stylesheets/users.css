@@ -5,35 +5,24 @@
 
 .orders-container {
   margin: 0 auto;
-  /*width: 650px;*/
+  text-align: center;
 }
 
 .incomplete-orders {
-  border: 2px solid red;
   display: inline-block;
   margin: 10px;
-  margin-right: 0;
+  float: left;
 }
 
 .complete-orders {
-  border: 2px solid red;
-  max-width: 500px;
   display: inline-block;
   margin: 10px;
-  position: relative;
 }
 
 .passed-orders {
-  border: 2px solid red;
-  max-width: 500px;
-  /*display: inline-block;*/
-  margin: 10px;
-  float: bottom;
-}
-
-.open-work-orders {
   display: inline-block;
-  float: left;
+  margin: 10px;
+
 }
 
 .employees {
@@ -53,10 +42,4 @@
   border-radius: 5px;
   margin-top: 15px;
   width: 130px;
-}
-
-@media (max-width: 700px){
-  .complete-orders, .passed-orders, .sign-out-link {
-    display: none;
-  }
 }
