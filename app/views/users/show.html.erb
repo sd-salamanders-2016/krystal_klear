@@ -1,4 +1,4 @@
-<%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+<div class="sign-out-link"><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></div>
 
 <% if @user != current_user %>
   <h3><%= @user.name %></h3>
@@ -11,9 +11,3 @@
 <% else %>
   <%= render "employee_page" %>
 <% end %>
-
-
-
-
-
-

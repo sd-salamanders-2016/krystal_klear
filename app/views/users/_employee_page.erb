@@ -1,6 +1,20 @@
+<button id="hamburger-btn" type="button" class="btn btn-default" aria-label="Left Align">
+  <span class="glyphicon glyphicon-menu-hamburger"></span>
+</button>
+
+<div class="user-name-display"><%= @user.name %></div>
+<div id="mobile-menu">
+  <span>Incomplete</span>
+  <span>Complete</span>
+  <span>Pass</span>
+  <span>Sign Out</span>
+</div>
+
+<div id="overlay-view">
+
 <h2 class="name-header"><%= @user.name %></h2>
 <% current_week = Time.now.strftime('%W').to_i %>
-<div class="orders-container">
+
 
 <div class="incomplete-orders">
   <h3>Incomplete Work Orders</h3>
@@ -66,5 +80,4 @@
     <% end %>
   </ul>
 </div>
-
 </div>
