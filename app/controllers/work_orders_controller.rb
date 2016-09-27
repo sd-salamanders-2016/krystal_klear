@@ -12,6 +12,7 @@ class WorkOrdersController < ApplicationController
   # GET /work_orders/1
   # GET /work_orders/1.json
   def show
+
   end
 
   # GET /work_orders/new

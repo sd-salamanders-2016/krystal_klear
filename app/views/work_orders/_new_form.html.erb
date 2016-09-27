@@ -1,0 +1,9 @@
+<%= simple_form_for(wo, html: {:class => 'form-inline' }) do |f| %>
+  <%= f.input :final_price, label: false, input_html: {value: wo.job.estimated_price} %>
+  <%= f.input :notes, as: :text, input_html: {rows: 10, cols: 10}, label: false, placeholder: "Comment..."  %>
+    <%= f.input :complete, as: :radio_buttons, label: "Status", collection: ["Complete", "Pass"], selected: "Complete" %>
+  <div class="form-actions">
+    <%= f.button :submit, value: "Done" %>
+  </div>
+<% end %>
+
