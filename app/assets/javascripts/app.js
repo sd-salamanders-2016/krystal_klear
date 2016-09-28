@@ -196,26 +196,31 @@ $(document).ready(function(){
     $.ajax({
       url: $url,
       data: $formData,
-      method: 'PUT',
-      dataType: 'JSON'
+      method: 'PUT'
     }).done(function(response){
+      console.log(response);
+      $currentJob.remove();
+      $('.complete-orders .data-row-container').prepend(response);
     })
   });
 
   // done for the main employee page
   $(".edit_work_order").submit(function(event){
     event.preventDefault();
-    var $url = $(this).attr('action');
-    var $formData = $(this).serialize();
-    var $completion = $(this).val('work_order[complete]')
-    var $finalPrice = $(this).val('work_order[final_price]')
+    var $this = $(this);
+    var $currentJob = $this.closest('.reorder')
+    var $url = $this.attr('action');
+    var $formData = $this.serialize();
 
     $.ajax({
       url: $url,
       data: $formData,
-      method: 'PUT',
-      dataType: 'JSON'
+      method: 'PUT'
     }).done(function(response){
+      console.log(response);
+      // if(work_order.route.day)
+      $currentJob.remove();
+      $('.complete-orders .data-row-container').prepend(response);
     })
   });
 

@@ -67,8 +67,11 @@ class WorkOrdersController < ApplicationController
   def update
     respond_to do |format|
       if @work_order.update(work_order_params)
-        format.html { redirect_to employee_user_path(@work_order.employees.first), notice: 'Work order was successfully updated.' }
-        format.json { render :show, status: :ok, location: @work_order }
+        if request.xhr?
+          format.html { render partial: 'work_orders/complete_list', locals: { wo: @work_order } }
+        else
+          format.html { redirect_to employee_user_path(@work_order.employees.first), notice: 'Work order was successfully updated.' }
+        end
       else
         format.html { render :edit }
         format.json { render json: @work_order.errors, status: :unprocessable_entity }

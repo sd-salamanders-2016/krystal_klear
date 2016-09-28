@@ -41,13 +41,13 @@
     <p>You don't have any complete work orders this week!</p>
   <% else %>
 
-    <div class="row">
+    <div class="row header-row-container">
       <div class="header col-xs-1"><p>Day</p></div>
       <div class="header col-xs-9"><p>Job Name</p></div>
       <div class="header col-xs-2"><p>Price</p></div>
     </div>
 
-    <div class="row">
+    <div class="row data-row-container">
       <% @user.work_orders.current_week.complete.each do |wo| %>
         <div class='reorder-complete'>
           <div class="not-header col-xs-1">
@@ -90,7 +90,7 @@
             <% end %>
             </div>
           <div class="not-header col-xs-9"><p><%= link_to "#{wo.job.name}", work_order_path(wo) %>, R#<%= wo.route.id %></p></div>
-          <div class="not-header col-xs-2"><p><%= wo.job.estimated_price %></p></div>
+          <div class="not-header col-xs-2"><p><%= wo.final_price %></p></div>
         </div>
       <% end %>
     </div>
