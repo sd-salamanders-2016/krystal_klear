@@ -1,4 +1,35 @@
-.form-container {
-  width: 350px;
-  margin: 0 auto;
+#routes_list {
+  width: 70%;
+  margin: auto;
+}
+
+#routes_list td {
+  margin-left: 10px;
+}
+
+.form-inputs #employees{
+  width: 100%;
+  text-align: center;
+}
+
+.form-inputs {
+  width: 100%;
+}
+
+.form_container {
+    width: 60%;
+    margin: 0 auto;
+}
+
+option {
+  width: 100%;
+  padding: 5px;
+}
+
+option:nth-of-type(2n) {
+  background-color: rgba(0,0,0,0.2);
+}
+
+h3.route {
+  text-align: center;
 }
