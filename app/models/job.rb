@@ -38,7 +38,6 @@ class Job < ActiveRecord::Base
           # create new work_order for job
           worder = WorkOrder.new(job_id: j.id, route_id: j.route_id)
           worder.week = current_week
-          worder.washing_datetime = Job.new.generate_random_time
           worder.save
         end
       end
