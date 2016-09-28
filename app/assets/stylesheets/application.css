@@ -371,6 +371,10 @@ nav li {
     display: none;
   }
 
+.detail {
+  padding-top: 80px;
+}
+
 .week-form form {
   text-align: center;
    margin: auto;
