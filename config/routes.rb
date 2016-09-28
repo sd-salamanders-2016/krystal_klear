@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  put '/work_orders/order', :to => 'work_orders#order'
+
   resources :work_orders
   resources :routes do
     member do

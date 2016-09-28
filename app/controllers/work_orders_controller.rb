@@ -1,8 +1,15 @@
 class WorkOrdersController < ApplicationController
   before_action :set_work_order, only: [:show, :edit, :update, :destroy]
+  skip_before_filter  :verify_authenticity_token
 
   # GET /work_orders
   # GET /work_orders.json
+
+  def order
+    puts "----------------------------------------"
+    puts params
+  end
+
   def index
     @routes = Route.all
     @week = params[:Week]

@@ -2,7 +2,7 @@ $(document).on("turbolinks:load", function(){
 
   $('.incomplete-orders').sortable({
     axis: 'y',
-    opacity: 1,
+    opacity: 0.5,
     scroll: true,
     items: '.reorder',
     dropOnEmpty: false,
@@ -90,6 +90,22 @@ $(document).on("turbolinks:load", function(){
 
 
     $(".rain-route-btn").click(toggleOpacity);
+
+    $('body').on('click', '.save-reordering', function(event){
+      event.preventDefault();
+      var jsonMobile = [];
+      var allReorders = $(this).closest('.incomplete-orders').find('.reorder');
+      allReorders.each(function(){
+        jsonMobile.push($(this).attr('id'))
+      })
+      console.log(jsonMobile)
+      $.ajax({
+        method: 'put',
+        contentType: 'JSON',
+        url: '/work_orders/order',
+        data: jsonMobile,
+      })
+    })
 });
 
 var rainShown = false;

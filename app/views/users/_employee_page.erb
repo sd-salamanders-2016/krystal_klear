@@ -2,7 +2,7 @@
 
 <div class="orders-container container-fluid">
   <% @user.current_week_routes.distinct.each do |route| %>
-
+<!-- user find ROUTES ARRAY DISTINCT -->
 <div class="incomplete-orders">
   <h3>Incomplete Work Orders</h3>
 
@@ -15,7 +15,8 @@
 
     <div class="row">
       <% route.current_week_work_orders.where(complete: 'incomplete').each do |wo|  %>
-      <div class='reorder'>
+      <!-- For each route > find the WORK ORDERS that are INCOMPLETE-->
+      <div class='reorder' id='<%= wo.id %>'>
         <div class="col-xs-2"><p><%= wo.route.id %></p></div>
         <div class="col-xs-4"><p><%= link_to "#{wo.job.name}", work_order_path(wo)  %></p></div>
         <div class="col-xs-2"><p><%= wo.job.estimated_price %></p></div>
@@ -23,6 +24,7 @@
       </div>
       <% end %>
     </div>
+    <div class="save-reordering"><%= render partial: "work_orders/modify_form" %></div>
   </div>
 
 <div class="complete-orders">
@@ -36,6 +38,7 @@
 
     <div class="row">
       <% route.current_week_work_orders.where(complete: 'complete').each do |wo|  %>
+      <!-- For each route > find the WORK ORDERS that are COMPLETE-->
       <div class="col-xs-1"><p><%= wo.route.id %></p></div>
       <div class="col-xs-8"><p><%= link_to "#{wo.job.name}", work_order_path(wo)  %></p></div>
       <div class="col-xs-2"><p><%= wo.job.estimated_price %></p></div>
@@ -45,7 +48,7 @@
 
 <div class="passed-orders">
   <h3>Customer Pass Work Orders</h3>
-
+  <!-- For each route > find the WORK ORDERS that are PASSED-->
   <div class="row">
       <div class="col-xs-2"><p>R</p></div>
       <div class="col-xs-8"><p>Job Name</p></div>
