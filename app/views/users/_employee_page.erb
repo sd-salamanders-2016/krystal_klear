@@ -1,80 +1,65 @@
-<!-- <button id="hamburger-btn" type="button" class="btn btn-default" aria-label="Left Align">
-  <span class="glyphicon glyphicon-menu-hamburger"></span>
-</button> -->
-
-<!-- <div class="user-name-display"><%= @user.name %></div>
-<div id="mobile-menu">
-  <span>Incomplete</span>
-  <span>Complete</span>
-  <span>Pass</span>
-  <span>Sign Out</span>
-</div> -->
-
-
-
-<h2 class="name-header"><%= @user.name %></h2>
 <% current_week = Time.now.strftime('%W').to_i %>
 
+<div class="orders-container container-fluid">
+  <% @user.current_week_routes.distinct.each do |route| %>
 
 <div class="incomplete-orders">
   <h3>Incomplete Work Orders</h3>
-  <% @user.current_week_routes.distinct.each do |route| %>
-    <h4>Route: <%= route.name %></h4>
-    <table>
-      <tr>
-        <th>Job Name</th>
-        <th>Final Price</th>
 
-      </tr>
-    <% route.current_week_work_orders.where(complete: 'incomplete').each do |wo|  %>
-      <tr>
-        <td><%= link_to "#{wo.job.name}", work_order_path(wo)  %></td>
-        <td><%= render partial: "work_orders/new_form", locals: { wo: wo } %></td>
-      </tr>
+    <div class="row">
+      <div class="col-xs-2"><p>R</p></div>
+      <div class="col-xs-4"><p>Job Name</p></div>
+      <div class="col-xs-2"><p>Price</p></div>
+      <div class="col-xs-4"><p></p></div>
+    </div>
+
+    <div class="row">
+      <% route.current_week_work_orders.where(complete: 'incomplete').each do |wo|  %>
+      <div class='reorder'>
+        <div class="col-xs-2"><p><%= wo.route.id %></p></div>
+        <div class="col-xs-4"><p><%= link_to "#{wo.job.name}", work_order_path(wo)  %></p></div>
+        <div class="col-xs-2"><p><%= wo.job.estimated_price %></p></div>
+        <div class="col-xs-4"><%= render partial: "work_orders/done_form", locals: { wo: wo } %></div>
+      </div>
       <% end %>
-    </table>
-    <% end %>
-  </ul>
-</div>
+    </div>
+  </div>
 
 <div class="complete-orders">
   <h3>Complete Work Orders</h3>
-  <ul>
-  <% @user.current_week_routes.distinct.each do |route| %>
-    <h4><%= route.name %></h4>
-    <table>
-      <tr>
-        <th>Job Name</th>
-        <th>Final Price</th>
-      </tr>
-    <% route.current_week_work_orders.where(complete: 'complete').each do |wo|  %>
-      <tr>
-        <td><%= link_to "#{wo.job.name}", work_order_path(wo)  %></td>
-        <td><%= wo.final_price  %></td>
-      </tr>
+
+  <div class="row">
+      <div class="col-xs-2"><p>R</p></div>
+      <div class="col-xs-8"><p>Job Name</p></div>
+      <div class="col-xs-2"><p>Price</p></div>
+    </div>
+
+    <div class="row">
+      <% route.current_week_work_orders.where(complete: 'complete').each do |wo|  %>
+      <div class="col-xs-1"><p><%= wo.route.id %></p></div>
+      <div class="col-xs-8"><p><%= link_to "#{wo.job.name}", work_order_path(wo)  %></p></div>
+      <div class="col-xs-2"><p><%= wo.job.estimated_price %></p></div>
       <% end %>
-    </table>
-    <% end %>
-  </ul>
+    </div>
 </div>
 
 <div class="passed-orders">
   <h3>Customer Pass Work Orders</h3>
-  <ul>
-  <% @user.current_week_routes.distinct.each do |route| %>
-    <h4><%= route.name %></h4>
-    <table>
-      <tr>
-        <th>Job Name</th>
-        <th>Estimated Price</th>
-      </tr>
-    <% route.current_week_work_orders.where(complete: 'pass').each do |wo|  %>
-      <tr>
-        <td><%= link_to "#{wo.job.name}", work_order_path(wo)  %></td>
-        <td><%= wo.job.estimated_price  %></td>
-      </tr>
+
+  <div class="row">
+      <div class="col-xs-2"><p>R</p></div>
+      <div class="col-xs-8"><p>Job Name</p></div>
+      <div class="col-xs-2"><p>Price</p></div>
+    </div>
+
+  <div class="row">
+      <% route.current_week_work_orders.where(complete: 'pass').each do |wo|  %>
+      <div class="col-xs-2"><p><%= wo.route.id %></p></div>
+      <div class="col-xs-8"><p><%= link_to "#{wo.job.name}", work_order_path(wo)  %></p></div>
+      <div class="col-xs-2"><p><%= wo.job.estimated_price %></p></div>
       <% end %>
-    </table>
-    <% end %>
-  </ul>
+    </div>
+</div>
+<% end %>
+
 </div>
