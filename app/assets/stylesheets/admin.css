@@ -1,11 +1,19 @@
 .admin-container {
-  width: 70%;
-  display: block;
+  width: 100%;
+  display: inline-block;
   margin: 0 auto;
 }
 
+.open-work-orders {
+  margin: auto;
+  position: relative;
+  display: inline-block;
+  width: 60%;
+  margin-bottom: 5%;
+}
+
 .employees {
-  float: right;
+  float: left;
 }
 
 .line {
@@ -30,9 +38,11 @@
 }
 
 .week-form {
+  margin-top: 3%;
+  position: relative;
   width: 190px;
-  margin: 20px auto;
-  float: left;
+  margin-right: 30%;
+  float: right;
 }
 
 .work-order-link {
@@ -49,4 +59,26 @@
 }
 .row-align {
   text-align: left;
+}
+
+@media (max-width: 739px){
+  .open-work-orders {
+  margin: auto;
+  margin-top: 5%;
+  position: relative;
+  display: block;
+  width: 100%;
+  margin-bottom: 5%;
+  }
+}
+
+@media (max-width: 870px){
+  .open-work-orders {
+  margin: auto;
+  margin-top: 5%;
+  position: relative;
+  display: block;
+  width: 100%;
+  margin-bottom: 5%;
+  }
 }

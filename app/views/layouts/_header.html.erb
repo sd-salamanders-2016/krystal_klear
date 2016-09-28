@@ -1,23 +1,26 @@
 <div id='title-and-navbar'>
     <h1 class="company-title">Krystal Klear</h1>
-    <div class="sign-out-link"><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></div>
 
     <% if current_user && current_user.admin? %>
 
     <nav>
       <ul>
         <li class='navbar-text'><%= link_to "Home", user_path(current_user) %></li>
-        <li class='navbar-text'>|</li>
+        <li class='navbar-text pipe'>|</li>
         <li class='navbar-text'><%= link_to "Employees", users_path %></li>
-        <li class='navbar-text'>|</li>
+        <li class='navbar-text pipe'>|</li>
         <li class='navbar-text'><%= link_to "Clients", clients_path %></li>
-        <li class='navbar-text'>|</li>
+        <li class='navbar-text pipe'>|</li>
         <li class='navbar-text'><%= link_to "Routes", routes_path %></li>
-        <li class='navbar-text'>|</li>
+        <li class='navbar-text pipe'>|</li>
         <li class='navbar-text'><%= link_to "The Grid", the_grid_index_path %></li>
+        <li class='navbar-text pipe'>|</li>
+        <li class="navbar-text"><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
       </ul>
     </nav>
 
+      <% else %>
+         <div class="sign-out-link"><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></div>
     <% end %>
 </div>
 
