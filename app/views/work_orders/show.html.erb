@@ -18,16 +18,16 @@
   <% end %>
 </p>
 
-<%= simple_form_for(@work_order) do |f| %>
-  <%= f.input :final_price, input_html: {value: @work_order.job.estimated_price}, label: "Final Price:" %><br>
+<form class="update-form" method="post" action="/work_orders">
+<p><label class="inline">Final Price:</label>
+<input class="inline-price" type="text" name="final_price" placeholder="<%= @work_order.job.estimated_price %>"/></p>
+<div class="textarea"><p><textarea name="notes" placeholder="Optional notes..."/></textarea></p></div>
+<p><label class="inline">Status:</label><select name="complete">
+  <option value="Complete">Complete</option>
+  <option value="Pass">Pass</option>
+  </select></p>
 
-  <%= f.input :complete, label: "Status:", collection: ["Complete", "Pass"], selected: "Complete" %>
-
-  <%= f.input :notes, label: false, as: :text, input_html: {rows: 5, cols: 20}, placeholder: "Optional notes..."  %>
-  <div class="form-actions">
-    <%= f.button :submit, value: "Done" %>
-  </div>
-<% end %>
-
+<p><input class="button" type="submit" value="Done"/></p>
+</form>
 <%= link_to 'Cancel', user_path(current_user) %>
 </div>

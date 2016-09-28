@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   def employee
     if current_user.admin == true
       @user = User.find_by(id: params[:id])
-      render :employee
+      render :employee, layout: false
     else
       redirect_to "/"
     end

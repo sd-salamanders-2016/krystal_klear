@@ -14,6 +14,20 @@
  *= require_self
  */
 
+ .inline-price{
+  display: inline;
+  width: 60px;
+  border-radius: 8px;
+   border: 1px solid gray;
+ }
+
+ textarea{
+  border-radius: 8px;
+  border: 1px solid gray;
+  width: 100%;
+  height: 100px;
+ }
+
  label.float{
   display: inline;
  }
@@ -31,11 +45,22 @@
 
  div.reorder{
   border: 1px solid gray;
+  border-radius: 8px;
   padding-top: 10px;
   width: 100%;
-  height: 80px;
+  height: 70px;
   margin-bottom: 5px;
   overflow: hidden;
+ }
+
+ div.reorder-complete{
+  border: 1px solid gray;
+  border-radius: 8px;
+  padding-top: 10px;
+  width: 100%;
+  height: 50px;
+  margin-bottom: 5px;
+  overflow: scroll;
  }
 
 
@@ -87,6 +112,10 @@ body {
   margin: auto;
 }
 
+#wo-container {
+  margin-top: 20px;
+  postion: absolute;
+}
 
 .company-title {
   width: 100%;
