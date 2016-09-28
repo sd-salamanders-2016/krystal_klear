@@ -55,3 +55,7 @@ textarea.text {
   font-weight: 700;
   color: #216C2A;
 }
+
+#detail {
+  display: none;
+}
