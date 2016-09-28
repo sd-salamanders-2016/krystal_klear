@@ -27,7 +27,15 @@
 
 }
 
+.employees h2 {
+  padding-bottom: 10px;
+  width: 80%;
+  border-bottom: 1px solid grey;
+}
 .employees {
+  margin-left: 4%;
+  padding-right: 50px;
+  position: relative;
   display: inline-block;
 }
 

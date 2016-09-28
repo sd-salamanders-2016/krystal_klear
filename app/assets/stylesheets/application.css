@@ -39,7 +39,7 @@
   width: 90%;
  }
 
- .conatianer{
+ .container{
   margin: 0;
  }
 
@@ -64,34 +64,41 @@ body {
 
 #title-and-navbar {
   margin: 0;
-  position: absolute;;
+  position: absolute;
   width: 100%;
-  height: 110px;
+  height: 130px;
   top: 0px;
-  float:left;
-  border-top: none;
   background: url(Star-icon-home.png) no-repeat center center;
   background-size: 80px 60px;
-  background-position: bottom;
+  background-position: 50% 39px;
   background-color: lightblue;
+  border-bottom: 3px solid white;
 }
+
 
 #content-container {
   margin-top: 200px;
-  postion: absolute;
+  width: 100%;
+  margin: auto;
 }
 
 
 .company-title {
+  width: 100%;
   text-align: center;
   font-family: georgia;
   font-weight: 900;
   font-size: 30px;
-  color: grey;
+  color: white;
   font-weight: 1300;
-  padding: 20px;
+  padding: 10px;
   margin: 0px;
   letter-spacing: 3px;
+  position: absolute;
+}
+.pipe{
+  color: white;
+  opacity: 0.5;
 }
 
 .navbar-text a {
@@ -99,22 +106,21 @@ body {
   font-size: 0.9em;
 }
 
-nav{
+nav {
   position: relative;
   display: inline-block;
   max-width: 100%;
   text-align: center;
-  margin: 0 auto;
+  margin: 0;
 }
 
-.navbar-text:visited a {
-  color: white;
-  text-shadow: black -1px 1px;
+.navbar-text:active {
+  color: dodgerblue;
 }
 
 .navbar-text:hover a {
-  color: lightgra;
-  text-shadow: black -2px 2px;
+  text-decoration: none;
+  color: #424242;
 }
 
 h1.company-title {
@@ -125,11 +131,8 @@ h1.name-header {
   margin-bottom: 0px;
 }
 
-nav {
-  padding: 10px 0px;
-}
-
 nav ul {
+  margin-top: 90px;
   text-align: center;
 }
 
@@ -137,8 +140,7 @@ nav li {
   font-family: 'Lato', sans-serif;
   font-weight: 700;
   display: inline-block;
-  font-size: 20px;
-  padding-right: 20px;
+  font-size: 18px;
 }
 
 .back-link {
@@ -252,6 +254,10 @@ nav li {
   background-color: #7289AB;
 }
 
+.new_user {
+  margin-top: 20%;
+}
+
 @media screen and (max-width: 1720px) {
     .route-name {
       font-size: .6em;
@@ -304,4 +310,10 @@ nav li {
       border-top: solid black 1px;
       width: 50%;
     }
+}
+
+@media screen and (max-width: 466px) {
+  nav {
+    display: none;
+  }
 }
