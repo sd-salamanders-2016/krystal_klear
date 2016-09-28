@@ -5,7 +5,19 @@ $(document).on("turbolinks:load", function(){
     opacity: 0.5,
     scroll: true,
     items: '.reorder',
+    handle: 'p',
     dropOnEmpty: false,
+    update: function(){
+      $.ajax({
+        type: 'post',
+        url: '/work_orders/order',
+        data: $('.incomplete-orders').sortable('serialize'),
+        dataType: 'script',
+        complete: function(request){
+          $('.incomplete-orders').effect('highlight');
+        }
+      })
+    }
   });
 
 
@@ -91,21 +103,25 @@ $(document).on("turbolinks:load", function(){
 
     $(".rain-route-btn").click(toggleOpacity);
 
-    $('body').on('click', '.save-reordering', function(event){
-      event.preventDefault();
-      var jsonMobile = [];
-      var allReorders = $(this).closest('.incomplete-orders').find('.reorder');
-      allReorders.each(function(){
-        jsonMobile.push($(this).attr('id'))
-      })
-      console.log(jsonMobile)
-      $.ajax({
-        method: 'put',
-        contentType: 'JSON',
-        url: '/work_orders/order',
-        data: jsonMobile,
-      })
-    })
+    // $('body').on('click', '.save-reordering', function(event){
+    //   event.preventDefault();
+    //   var jsonMobile = [];
+    //   var allReorders = $(this).closest('.row').find('.reorder');
+    //   allReorders.each(function(){
+    //     jsonMobile.push($(this).attr('id'))
+    //   })
+
+    //   console.log(jsonMobile)
+    //   $.ajax({
+    //     method: 'put',
+    //     dataType: 'JSON',
+    //     url: '/work_orders/order',
+    //     data: {ids: jsonMobile},
+    //   })
+    //   .done(function(response){
+    //     console.log('done?')
+    //   })
+    // })
 });
 
 var rainShown = false;
@@ -187,8 +203,10 @@ $(document).ready(function(){
 // done from the slid down form
   $('body').on('submit', '.update-form', function(event){
     event.preventDefault();
-    var $url = $(this).attr('action');
+    var $this = $(this);
+    var $url = $this.attr('action');
     var $formData = $(this).serialize();
+    var $currentJob = $this.closest('.reorder')
 
     $('.orders-container').show();
     $("#detail").slideUp("slow", "swing");
@@ -196,26 +214,31 @@ $(document).ready(function(){
     $.ajax({
       url: $url,
       data: $formData,
-      method: 'PUT',
-      dataType: 'JSON'
+      method: 'PUT'
     }).done(function(response){
+      console.log(response);
+      $currentJob.remove();
+      $('.complete-orders .data-row-container').prepend(response);
     })
   });
 
   // done for the main employee page
   $(".edit_work_order").submit(function(event){
     event.preventDefault();
-    var $url = $(this).attr('action');
-    var $formData = $(this).serialize();
-    var $completion = $(this).val('work_order[complete]')
-    var $finalPrice = $(this).val('work_order[final_price]')
+    var $this = $(this);
+    var $currentJob = $this.closest('.reorder')
+    var $url = $this.attr('action');
+    var $formData = $this.serialize();
 
     $.ajax({
       url: $url,
       data: $formData,
-      method: 'PUT',
-      dataType: 'JSON'
+      method: 'PUT'
     }).done(function(response){
+      console.log(response);
+      // if(work_order.route.day)
+      $currentJob.remove();
+      $('.complete-orders .data-row-container').prepend(response);
     })
   });
 

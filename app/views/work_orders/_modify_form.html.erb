@@ -1,3 +1,3 @@
-<%= form_tag('/work_orders/order', method: 'put') do %>
-    <%= submit_tag('Save Arrangement') %>
-<% end %>
+<form class="update-form" method="put" data-remote="true" action="/work_orders/order">
+  <p><input class="save-reordering" type="submit" value="Save Reorder"/></p>
+</form>
