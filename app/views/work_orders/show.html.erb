@@ -1,11 +1,5 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Employees:</strong>
-  <% @work_order.employees.each do |employee| %>
-    <%= employee.name %>
-  <% end %>
-</p>
+<div class="detail">
 
 <p>
   <strong>Client:</strong>
@@ -13,34 +7,27 @@
 </p>
 
 <p>
-  <strong>Job:</strong>
-  <%= @work_order.job.name %>
-</p>
-
-<p>
-  <strong>Job Description:</strong>
+  <strong>Description:</strong>
   <%= @work_order.job.description %>
 </p>
 
 <p>
-  <strong>Estimated price:</strong>
-  <%= @work_order.job.estimated_price %>
+  <strong>Employee(s):</strong>
+  <% @work_order.employees.each do |employee| %>
+    <%= employee.name %>
+  <% end %>
 </p>
 
-<p>
-  <strong>Final price:</strong>
-  <%= @work_order.final_price %>
-</p>
+<%= simple_form_for(@work_order) do |f| %>
+  <%= f.input :final_price, input_html: {value: @work_order.job.estimated_price}, label: "Final Price:" %><br>
 
-<p>
-  <strong>Notes:</strong>
-  <%= @work_order.notes %>
-</p>
+  <%= f.input :complete, label: "Status:", collection: ["Complete", "Pass"], selected: "Complete" %>
 
-<p>
-  <strong>Complete:</strong>
-  <%= @work_order.complete %>
-</p>
+  <%= f.input :notes, label: false, as: :text, input_html: {rows: 5, cols: 20}, placeholder: "Optional notes..."  %>
+  <div class="form-actions">
+    <%= f.button :submit, value: "Done" %>
+  </div>
+<% end %>
 
-<%= link_to 'Edit', edit_work_order_path(@work_order) %> |
-<%= link_to 'Back', user_path(current_user) %>
+<%= link_to 'Cancel', user_path(current_user) %>
+</div>

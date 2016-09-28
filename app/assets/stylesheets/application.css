@@ -13,9 +13,15 @@
  *= require_tree .
  *= require_self
  */
- .bottom-border {
-  border-bottom: 2px dotted navy;
+
+ label.float{
+  display: inline;
  }
+
+.detail{
+  padding: 10px;
+  margin: 10px;
+}
 
  div.form-actions{
   display: block;
@@ -31,7 +37,7 @@
 }
 
 .form-inline, .form-inline div {
-  display: inline-block 
+  display: inline-block
 }
 
  .hidden {
