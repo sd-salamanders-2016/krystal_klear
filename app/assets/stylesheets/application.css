@@ -18,6 +18,11 @@
   display: inline;
  }
 
+ input[value="Log in"] {
+  width: 100%;
+  border: 1px solid red;
+ }
+
 
 .detail{
   padding: 10px;
