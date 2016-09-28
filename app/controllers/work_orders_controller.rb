@@ -1,13 +1,14 @@
 class WorkOrdersController < ApplicationController
   before_action :set_work_order, only: [:show, :edit, :update, :destroy]
-  skip_before_filter  :verify_authenticity_token
+  protect_from_forgery :except => [:order]
 
-  # GET /work_orders
-  # GET /work_orders.json
 
   def order
-    puts "----------------------------------------"
-    puts params
+    current_user.work_orders.current_week.where(complete: 'incomplete').each do |baller|
+      baller.position = params['wo'].index(baller.id.to_s) + 1
+      baller.save
+    end
+    render :nothing => true
   end
 
   def index

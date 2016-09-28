@@ -14,8 +14,8 @@
 
     <div class="row">
 
-      <% @user.work_orders.current_week.incomplete.each do |wo| %>
-        <div class='reorder'>
+      <% @user.work_orders.current_week.incomplete.order(:position).each do |wo| %>
+        <div class='reorder' id='wo_<%= wo.id %>'>
           <div class="col-xs-2">
             <% if wo.route.day != nil %>
               <p><%= wo.route.day.capitalize.slice(0..2) %></p>
@@ -27,7 +27,6 @@
           <div class="col-xs-2"><p><%= wo.job.estimated_price %></p></div>
           <div class="col-xs-4"><%= render partial: "work_orders/done_form", locals: { wo: wo } %></div>
         </div>
-
       <% end %>
     </div>
   <% end %>

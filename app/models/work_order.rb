@@ -1,8 +1,11 @@
 class WorkOrder < ActiveRecord::Base
   belongs_to :job
   belongs_to :route
+  has_one :primary_employee, through: :route, source: :employee
   has_many :employee_work_orders
   has_many :employees, through: :employee_work_orders, source: :user
+  acts_as_list :job
+
 
   scope :incomplete, -> { where(complete: "incomplete") }
   scope :complete, -> { where(complete: "complete") }
@@ -16,6 +19,7 @@ class WorkOrder < ActiveRecord::Base
   scope :friday, ->{ joins(:route).where(routes: { day: "friday" }) }
   scope :saturday, ->{ joins(:route).where(routes: { day: "saturday" }) }
   scope :sunday, ->{ joins(:route).where(routes: { day: "sunday" }) }
+
 
   def incomplete?
     self.complete == "incomplete"

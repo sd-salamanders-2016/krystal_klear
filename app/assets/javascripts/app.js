@@ -5,7 +5,19 @@ $(document).on("turbolinks:load", function(){
     opacity: 0.5,
     scroll: true,
     items: '.reorder',
+    handle: 'p',
     dropOnEmpty: false,
+    update: function(){
+      $.ajax({
+        type: 'post',
+        url: '/work_orders/order',
+        data: $('.incomplete-orders').sortable('serialize'),
+        dataType: 'script',
+        complete: function(request){
+          $('.incomplete-orders').effect('highlight');
+        }
+      })
+    }
   });
 
 
@@ -91,21 +103,25 @@ $(document).on("turbolinks:load", function(){
 
     $(".rain-route-btn").click(toggleOpacity);
 
-    $('body').on('click', '.save-reordering', function(event){
-      event.preventDefault();
-      var jsonMobile = [];
-      var allReorders = $(this).closest('.incomplete-orders').find('.reorder');
-      allReorders.each(function(){
-        jsonMobile.push($(this).attr('id'))
-      })
-      console.log(jsonMobile)
-      $.ajax({
-        method: 'put',
-        contentType: 'JSON',
-        url: '/work_orders/order',
-        data: jsonMobile,
-      })
-    })
+    // $('body').on('click', '.save-reordering', function(event){
+    //   event.preventDefault();
+    //   var jsonMobile = [];
+    //   var allReorders = $(this).closest('.row').find('.reorder');
+    //   allReorders.each(function(){
+    //     jsonMobile.push($(this).attr('id'))
+    //   })
+
+    //   console.log(jsonMobile)
+    //   $.ajax({
+    //     method: 'put',
+    //     dataType: 'JSON',
+    //     url: '/work_orders/order',
+    //     data: {ids: jsonMobile},
+    //   })
+    //   .done(function(response){
+    //     console.log('done?')
+    //   })
+    // })
 });
 
 var rainShown = false;
