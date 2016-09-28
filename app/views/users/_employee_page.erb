@@ -16,8 +16,14 @@
 
       <% @user.work_orders.current_week.incomplete.each do |wo| %>
         <div class='reorder'>
-          <div class="col-xs-2"><p><%= wo.route.day.capitalize.slice(0..2) %></p></div>
-          <div class="col-xs-4"><p><%= link_to "#{wo.job.name}", work_order_path(wo) %>, R#<%= wo.route.id %></p></div>
+          <div class="col-xs-2">
+            <% if wo.route.day != nil %>
+              <p><%= wo.route.day.capitalize.slice(0..2) %></p>
+            <% else %>
+              <p>TBA</p>
+            <% end %>
+            </div>
+          <div class="col-xs-4 job-description-name"><p><%= link_to "#{wo.job.name}", work_order_path(wo) %>, R#<%= wo.route.id %></p></div>
           <div class="col-xs-2"><p><%= wo.job.estimated_price %></p></div>
           <div class="col-xs-4"><%= render partial: "work_orders/done_form", locals: { wo: wo } %></div>
         </div>
