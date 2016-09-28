@@ -1,5 +1,4 @@
 <div class="orders-container container-fluid">
-
 <div class="incomplete-orders">
   <h3>Incomplete Work Orders</h3>
   <% if @user.work_orders.current_week.incomplete.empty? %>
@@ -14,6 +13,7 @@
     </div>
 
     <div class="row">
+
       <% @user.work_orders.current_week.incomplete.each do |wo| %>
         <div class='reorder'>
           <div class="col-xs-2"><p><%= wo.route.day.capitalize.slice(0..2) %></p></div>
@@ -21,6 +21,7 @@
           <div class="col-xs-2"><p><%= wo.job.estimated_price %></p></div>
           <div class="col-xs-4"><%= render partial: "work_orders/done_form", locals: { wo: wo } %></div>
         </div>
+
       <% end %>
     </div>
   <% end %>

@@ -7,7 +7,6 @@ class CreateWorkOrders < ActiveRecord::Migration
       t.text :notes
       t.integer :week
       t.string :complete, default: 'incomplete'
-      t.datetime :washing_datetime
 
       t.timestamps null: false
     end

@@ -17,11 +17,6 @@ class WorkOrder < ActiveRecord::Base
   scope :saturday, ->{ joins(:route).where(routes: { day: "saturday" }) }
   scope :sunday, ->{ joins(:route).where(routes: { day: "sunday" }) }
 
-
-  def weekday
-    self.washing_datetime.strftime('%A')
-  end
-
   def incomplete?
     self.complete == "incomplete"
   end

@@ -1,8 +1,15 @@
 class WorkOrdersController < ApplicationController
   before_action :set_work_order, only: [:show, :edit, :update, :destroy]
+  skip_before_filter  :verify_authenticity_token
 
   # GET /work_orders
   # GET /work_orders.json
+
+  def order
+    puts "----------------------------------------"
+    puts params
+  end
+
   def index
     @routes = Route.all
     @week = params[:Week]
@@ -12,7 +19,9 @@ class WorkOrdersController < ApplicationController
   # GET /work_orders/1
   # GET /work_orders/1.json
   def show
-
+    if request.xhr?
+      render :_mobile_work_order, layout: false
+    end
   end
 
   # GET /work_orders/new
@@ -88,4 +97,3 @@ class WorkOrdersController < ApplicationController
       params.require(:work_order).permit(:employee_id, :job_id, :final_price, :notes, :complete)
     end
 end
-

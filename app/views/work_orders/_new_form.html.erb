@@ -1,3 +1,4 @@
+
 <%= simple_form_for(wo, html: {:class => 'form-inline' }) do |f| %>
   <%= f.input :notes, as: :text, input_html: {rows: 5, cols: 20}, label: false, placeholder: "Comment..."  %>
     <%= f.input :complete, as: :radio_buttons, label: false, collection: ["Complete", "Pass"], selected: "Complete" %>
