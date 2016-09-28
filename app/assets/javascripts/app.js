@@ -1,6 +1,7 @@
-$(document).ready(function() {
+$(document).on("turbolinks:load", function(){
 
-  $("#route-container a, .grid-container a").draggable({
+   $("#route-container a, .grid-container a").draggable({
+
     helper: "clone",
     start: function() {
       originNode = this.parentElement;
@@ -15,13 +16,11 @@ $(document).ready(function() {
       var newValue = total - draggableValue;
       if(newValue < 0) newValue = 0;
       tr.children[tr.children.length - 1].innerHTML = "<p>$" + newValue + "</p>"
-      console.log(newValue);
     }
-
-
 
     }
   });
+
 
   $( ".droppable" ).droppable({
     drop: function(event, ui){
@@ -82,7 +81,6 @@ $(document).ready(function() {
 
 
     $(".rain-route-btn").click(toggleOpacity);
-
 });
 
 var rainShown = false;
