@@ -18,9 +18,8 @@
         <li class="navbar-text"><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
       </ul>
     </nav>
-
-      <% else %>
-         <div class="sign-out-link"><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></div>
+    <% elsif current_user %>
+         <div class="sign-out-link"><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></div>
     <% end %>
 </div>
 

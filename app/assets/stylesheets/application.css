@@ -34,7 +34,6 @@
 
  input[value="Log in"] {
   width: 100%;
-  border: 1px solid red;
  }
 
 
@@ -61,9 +60,28 @@
   width: 100%;
   height: 50px;
   margin-bottom: 5px;
-  overflow: scroll;
  }
 
+ .sign-out-link {
+  text-align: center;
+  border: 1px solid white;
+  width: 10%;
+  padding: 3px;
+  background: rgba(255,255,255,0.2);
+  margin-left: 10px;
+  font-size: 1.8em;
+  margin-top: 55px;
+ }
+
+.sign-out-link a {
+  text-decoration: none;
+  color: white;
+}
+
+.sign-out-link:hover {
+  text-decoration: none;
+  background-color: lightblue;
+}
 
  div.form-actions{
   display: block;
@@ -113,8 +131,8 @@ body {
 
 
 #content-container {
+  max-width: 65%;
   margin-top: 200px;
-  width: 100%;
   margin: auto;
 }
 
@@ -294,10 +312,6 @@ nav li {
   background-color: #7289AB;
 }
 
-.new_user {
-  margin-top: 20%;
-}
-
 @media screen and (max-width: 1720px) {
     .route-name {
       font-size: .6em;
@@ -353,7 +367,25 @@ nav li {
 }
 
 @media screen and (max-width: 466px) {
-  nav {
+  nav  {
     display: none;
+  }
+
+.week-form form {
+  text-align: center;
+   margin: auto;
+ }
+
+  #content-container{
+    max-width: 100%;
+  }
+
+
+}
+
+@media (max-width: 1063px){
+  .sign-out-link {
+    min-width: 92px;
+    font-size: 1.3em;
   }
 }
