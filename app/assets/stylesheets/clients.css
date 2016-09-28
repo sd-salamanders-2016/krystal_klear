@@ -20,10 +20,10 @@
   border-bottom: 1px solid #ddd;
 }
 
-.table tr:nth-child(even) {background-color: #ccddff}
+.table tr:nth-child(even) {background-color: #B0BEC5}
 
 .table .head {
-  background-color: #668cff;
+  background-color:#B0BEC5;
 }
 
 #new_client_button {

@@ -35,9 +35,8 @@
 }
 
 .grid-table .grid-head {
-  background-color: #668cff;
-  color: #fff;
-  text-shadow: black -2px 2px;
+  background-color: #B0BEC5;
+  color: grey;
 }
 
 .grid-td a {
