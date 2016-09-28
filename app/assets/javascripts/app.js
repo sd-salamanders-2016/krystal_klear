@@ -5,7 +5,7 @@ $(document).on("turbolinks:load", function(){
     opacity: 0.5,
     scroll: true,
     items: '.reorder',
-    handle: 'p',
+    handle: 'i',
     dropOnEmpty: false,
     update: function(){
       $.ajax({
@@ -13,9 +13,6 @@ $(document).on("turbolinks:load", function(){
         url: '/work_orders/order',
         data: $('.incomplete-orders').sortable('serialize'),
         dataType: 'script',
-        complete: function(request){
-          $('.incomplete-orders').effect('highlight');
-        }
       })
     }
   });
