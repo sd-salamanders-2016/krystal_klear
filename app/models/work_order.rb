@@ -4,6 +4,15 @@ class WorkOrder < ActiveRecord::Base
   has_many :employee_work_orders
   has_many :employees, through: :employee_work_orders, source: :user
 
+  scope :monday, ->{ joins(:route).where(routes: { day: "monday" }) }
+  scope :tuesday, ->{ joins(:route).where(routes: { day: "tuesday" }) }
+  scope :wednesday, ->{ joins(:route).where(routes: { day: "wednesday" }) }
+  scope :thursday, ->{ joins(:route).where(routes: { day: "thursday" }) }
+  scope :friday, ->{ joins(:route).where(routes: { day: "friday" }) }
+  scope :saturday, ->{ joins(:route).where(routes: { day: "saturday" }) }
+  scope :sunday, ->{ joins(:route).where(routes: { day: "sunday" }) }
+
+
   def weekday
     self.washing_datetime.strftime('%A')
   end
