@@ -1,5 +1,6 @@
 <div id='title-and-navbar'>
     <h1 class="company-title">Krystal Klear</h1>
+    <div class="sign-out-link"><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></div>
 
     <% if current_user && current_user.admin? %>
 
@@ -19,4 +20,5 @@
 
     <% end %>
 </div>
+
 <div id='navbar-whitespace'></div>

@@ -1,5 +1,14 @@
 $(document).ready(function() {
 
+  $('.incomplete-orders').sortable({
+    axis: 'y',
+    opacity: 1,
+    scroll: true,
+    items: '.reorder',
+    dropOnEmpty: false,
+  });
+
+
   $("#route-container a, .grid-container a").draggable({
     helper: "clone",
     start: function() {
