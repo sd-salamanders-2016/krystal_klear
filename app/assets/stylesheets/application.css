@@ -18,10 +18,21 @@
   display: inline;
  }
 
+
 .detail{
   padding: 10px;
   margin: 10px;
 }
+
+ div.reorder{
+  border: 1px solid gray;
+  padding-top: 10px;
+  width: 100%;
+  height: 80px;
+  margin-bottom: 5px;
+  overflow: hidden;
+ }
+
 
  div.form-actions{
   display: block;
@@ -66,8 +77,8 @@ body {
 }
 
 #content-container {
-  margin-top: 90px;
-  postion: relative;
+  margin-top: 200px;
+  postion: absolute;
 }
 
 
@@ -85,6 +96,15 @@ body {
 
 .navbar-text a {
   color: white;
+  font-size: 0.9em;
+}
+
+nav{
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+  text-align: center;
+  margin: 0 auto;
 }
 
 .navbar-text:visited a {

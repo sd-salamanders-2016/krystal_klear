@@ -1,6 +1,15 @@
 $(document).on("turbolinks:load", function(){
 
-   $("#route-container a, .grid-container a").draggable({
+  $('.incomplete-orders').sortable({
+    axis: 'y',
+    opacity: 1,
+    scroll: true,
+    items: '.reorder',
+    dropOnEmpty: false,
+  });
+
+
+  $("#route-container a, .grid-container a").draggable({
 
     helper: "clone",
     start: function() {
