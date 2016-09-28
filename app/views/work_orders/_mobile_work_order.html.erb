@@ -20,7 +20,8 @@
 
 
 
-  <form class="update-form" method="post" action="/work_orders">
+  <form class="update-form" method="post" data-remote="true" action="/work_orders/<%= @work_order.id %>">
+  <input name="_method" type="hidden" value="put" />
   <p><label class="inline">Final Price:</label>
   <input class="inline-price" type="text" name="final_price" placeholder="<%= @work_order.job.estimated_price %>"/></p>
   <div class="textarea"><p><textarea name="notes" placeholder="Optional notes..."/></textarea></p></div>

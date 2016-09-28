@@ -162,33 +162,51 @@ $(document).ready(function(){
 // done from the slid down form
   $('body').on('submit', '.update-form', function(event){
     event.preventDefault();
+    var $url = $(this).attr('action');
+    console.log($url);
+    var $formData = $(this).serialize();
+    console.log($formData);
+
     $('.orders-container').show();
     $("#detail").slideUp("slow", "swing");
     setTimeout(function() { $("#detail").remove() }, 1000)
-  });
-
-  // done for the main employee page
-  $(".edit_work_order").submit(function(event){
-    event.preventDefault();
-    var $url = $(this).attr('action');
-    var $formData = $(this).serialize();
-    var $completion = $(this).val('work_order[complete]')
-    var $finalPrice = $(this).val('work_order[final_price]')
-    console.log($formData)
-
-    // { work_order[complete]: $completion, work_order[final_price]: $finalPrice }
-
-    console.log($formData);
     $.ajax({
       url: $url,
       data: $formData,
-      method: 'PATCH',
+      method: 'PUT',
       dataType: 'JSON'
     }).done(function(response){
-      alert('responded')
+      alert('responded');
       console.log(response);
     })
+
+
+
+
   });
+//
+//   // done for the main employee page
+//   $(".edit_work_order").submit(function(event){
+//     event.preventDefault();
+//     var $url = $(this).attr('action');
+//     var $formData = $(this).serialize();
+//     var $completion = $(this).val('work_order[complete]')
+//     var $finalPrice = $(this).val('work_order[final_price]')
+//     console.log($formData)
+//
+//     // { work_order[complete]: $completion, work_order[final_price]: $finalPrice }
+//
+//     console.log($formData);
+//     $.ajax({
+//       url: $url,
+//       data: $formData,
+//       method: 'PATCH',
+//       dataType: 'JSON'
+//     }).done(function(response){
+//       alert('responded')
+//       console.log(response);
+//     })
+//   });
 
 
 });
