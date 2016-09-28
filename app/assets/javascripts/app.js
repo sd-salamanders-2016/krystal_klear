@@ -5,7 +5,7 @@ $(document).on("turbolinks:load", function(){
     opacity: 0.5,
     scroll: true,
     items: '.reorder',
-    handle: '.sortable',
+    handle: 'i',
     dropOnEmpty: false,
     update: function(){
       $.ajax({
