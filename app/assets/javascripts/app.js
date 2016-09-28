@@ -148,31 +148,60 @@ function dasd() {
 
 $(document).ready(function(){
 
-  $('.job-description-name').click(function(event) {
+  $('body').on('click', '.job-description-name', function(event) {
     event.preventDefault();
     var clicks = $(this).data('clicks');
     var $this = $(this);
     var $currentJob = $(this).closest('.reorder')
     var $url = $(this).find('a').attr('href');
-    if (!clicks) {
+    var $details = $currentJob.find('.detail');
 
-       $.ajax({
-         url: $url,
-         method: 'GET'
-       }).done(function(response){
+// postBody.is(":visible"
 
-         $currentJob.after(response);
-         $("#detail").slideDown("slow")
-
-       });
-
-    } else {
-
-       $("#detail").slideUp("slow", "swing");
-       setTimeout(function() { $("#detail").remove() }, 1000)
-
+    // if the patial is not on page get it
+    if ($details.is(":visible")){
+      // $("#detail").slideT("slow");
+      $details.slideUp("slow", "swing");
+      // $('body').off('click', '.job-description-name');
+      //    setTimeout(function() { $("#detail").remove() }, 1000)
     }
-    $(this).data("clicks", !clicks);
+
+    else if ($details.length === 1){
+      $details.slideDown("slow");
+      // $('body').off('click', '.job-description-name');
+    }
+    // else it partial is on page toggle it
+    else {
+      $.ajax({
+        url: $url,
+        method: 'GET'
+      }).done(function(response){
+
+        $currentJob.append(response);
+        $currentJob.find('.detail').slideDown("slow");
+        // $('body').off('click', '.job-description-name');
+      });
+    }
+
+    // if (!clicks) {
+    //
+    //    $.ajax({
+    //      url: $url,
+    //      method: 'GET'
+    //    }).done(function(response){
+    //
+    //      $currentJob.after(response);
+    //      $("#detail").slideDown("slow")
+    //
+    //    });
+    //
+    // } else {
+    //
+    //    $("#detail").slideUp("slow", "swing");
+    //    setTimeout(function() { $("#detail").remove() }, 1000)
+    //
+    // }
+    // $(this).data("clicks", !clicks);
   });
 
 // done from the slid down form
@@ -200,29 +229,29 @@ $(document).ready(function(){
 
 
   });
-//
-//   // done for the main employee page
-//   $(".edit_work_order").submit(function(event){
-//     event.preventDefault();
-//     var $url = $(this).attr('action');
-//     var $formData = $(this).serialize();
-//     var $completion = $(this).val('work_order[complete]')
-//     var $finalPrice = $(this).val('work_order[final_price]')
-//     console.log($formData)
-//
-//     // { work_order[complete]: $completion, work_order[final_price]: $finalPrice }
-//
-//     console.log($formData);
-//     $.ajax({
-//       url: $url,
-//       data: $formData,
-//       method: 'PATCH',
-//       dataType: 'JSON'
-//     }).done(function(response){
-//       alert('responded')
-//       console.log(response);
-//     })
-//   });
+
+  // done for the main employee page
+  $(".edit_work_order").submit(function(event){
+    event.preventDefault();
+    var $url = $(this).attr('action');
+    var $formData = $(this).serialize();
+    var $completion = $(this).val('work_order[complete]')
+    var $finalPrice = $(this).val('work_order[final_price]')
+    console.log($formData)
+
+    // { work_order[complete]: $completion, work_order[final_price]: $finalPrice }
+
+    console.log($formData);
+    $.ajax({
+      url: $url,
+      data: $formData,
+      method: 'PATCH',
+      dataType: 'JSON'
+    }).done(function(response){
+      alert('responded')
+      console.log(response);
+    })
+  });
 
 
 });

@@ -39,18 +39,19 @@
 
 
 .detail{
+  display: none;
   padding: 10px;
   margin: 10px;
 }
 
  div.reorder{
+  overflow: auto;
   border: 1px solid gray;
   border-radius: 8px;
   padding-top: 10px;
   width: 100%;
-  height: 70px;
   margin-bottom: 5px;
-  overflow: hidden;
+  clear: both;
  }
 
  div.reorder-complete{
