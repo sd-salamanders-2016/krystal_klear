@@ -1,0 +1,11 @@
+<div class='reorder-complete'>
+  <div class="not-header col-xs-1">
+    <% if wo.route.day != nil %>
+      <p><%= wo.route.day.capitalize.slice(0..2) %></p>
+    <% else %>
+      <p>TBA</p>
+    <% end %>
+    </div>
+  <div class="not-header col-xs-9"><p><%= link_to "#{wo.job.name}", work_order_path(wo) %>, R#<%= wo.route.id %></p></div>
+  <div class="not-header col-xs-2"><p><%= wo.final_price %></p></div>
+</div>
