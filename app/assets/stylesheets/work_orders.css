@@ -1,3 +1,11 @@
+.col-xs-1, .col-xs-2, .col-xs-6, .col-xs-3, .col-xs-8 {
+  padding: 0 5px 0 5px;
+}
+
+.not-header p {
+  margin-bottom: 0;
+}
+
 .edit-form-container {
   width: 500px;
   margin: 0 auto;
@@ -5,6 +13,10 @@
 
 .edit-form-container h1 {
   text-align: center;
+}
+
+.row .header {
+  font-weight: bold;
 }
 
 .edit-form-container input {
@@ -36,7 +48,7 @@ input[type=submit] {
 
 div.form-actions {
   text-align: center;
-  margin: auto;
+  margin: 0 auto;
 }
 
 textarea.text {

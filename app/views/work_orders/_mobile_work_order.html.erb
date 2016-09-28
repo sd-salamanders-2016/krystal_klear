@@ -1,37 +1,35 @@
-<div id="detail">
-<p id="notice"><%= notice %></p>
+<div class="detail">
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Client:</strong>
-  <%= @work_order.job.client.business_name %>
-</p>
+  <p>
+    <strong>Client:</strong>
+    <%= @work_order.job.client.business_name %>
+  </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @work_order.job.description %>
-</p>
+  <p>
+    <strong>Description:</strong>
+    <%= @work_order.job.description %>
+  </p>
 
-<p>
-  <strong>Employee(s):</strong>
-  <% @work_order.employees.each do |employee| %>
-    <%= employee.name %>
-  <% end %>
-</p>
-
-
+  <p>
+    <strong>Employee(s):</strong>
+    <% @work_order.employees.each do |employee| %>
+      <%= employee.name %>
+    <% end %>
+  </p>
 
   <form class="update-form" method="post" data-remote="true" action="/work_orders/<%= @work_order.id %>">
-  <input name="_method" type="hidden" value="put" />
-  <p><label class="inline">Final Price:</label>
-  <input class="inline-price" type="text" name="final_price" placeholder="<%= @work_order.job.estimated_price %>"/></p>
-  <div class="textarea"><p><textarea name="notes" placeholder="Optional notes..."/></textarea></p></div>
-  <p><label class="inline">Status:</label><select name="complete">
-   <option value="Complete">Complete</option>
-   <option value="Pass">Pass</option>
-   </select></p>
+    <input name="_method" type="hidden" value="put" />
+    <p><label class="inline">Final Price:</label>
+    <input class="inline-price" type="text" name="work_order[final_price]" value="<%= @work_order.job.estimated_price %>"/></p>
+    <div class="textarea"><p><textarea name="work_order[notes]" placeholder="Optional notes..."/></textarea></p></div>
+    <p><label class="inline">Status:</label><select name="work_order[complete]">
+     <option value="complete">Complete</option>
+     <option value="pass">Pass</option>
+     </select></p>
 
-  <p><input class="mobile button" type="submit" value="Done"/></p>
+    <p><input class="mobile button" type="submit" value="Done"/></p>
   </form>
 
-<%= link_to 'Cancel', user_path(current_user) %>
+  <%= link_to 'Cancel', user_path(current_user) %>
 </div>
