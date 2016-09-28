@@ -187,8 +187,10 @@ $(document).ready(function(){
 // done from the slid down form
   $('body').on('submit', '.update-form', function(event){
     event.preventDefault();
-    var $url = $(this).attr('action');
+    var $this = $(this);
+    var $url = $this.attr('action');
     var $formData = $(this).serialize();
+    var $currentJob = $this.closest('.reorder')
 
     $('.orders-container').show();
     $("#detail").slideUp("slow", "swing");
