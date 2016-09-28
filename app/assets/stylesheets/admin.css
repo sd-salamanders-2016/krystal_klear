@@ -71,3 +71,14 @@
   margin-bottom: 5%;
   }
 }
+
+@media (max-width: 870px){
+  .open-work-orders {
+  margin: auto;
+  margin-top: 5%;
+  position: relative;
+  display: block;
+  width: 100%;
+  margin-bottom: 5%;
+  }
+}
