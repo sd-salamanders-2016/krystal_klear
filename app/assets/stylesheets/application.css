@@ -69,6 +69,11 @@
   width: 90%;
  }
 
+ div.form-actions input[value="Done"] {
+   width: 80%;
+   margin: auto;
+ }
+
  .container{
   margin: 0;
  }
