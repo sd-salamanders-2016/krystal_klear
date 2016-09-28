@@ -72,12 +72,12 @@
  .sign-out-link {
   text-align: center;
   border: 1px solid white;
-  width: 10%;
+  width: 7.5%;
   padding: 3px;
   border-radius: 8px;
   background: rgba(255,255,255,0.2);
   margin-left: 10px;
-  font-size: 1.8em;
+  font-size: 1.3em;
   margin-top: 55px;
  }
 
@@ -88,7 +88,6 @@
 
 .sign-out-link:hover {
   text-decoration: none;
-  background-color: #3B6D9D;
 }
 
  div.form-actions{
