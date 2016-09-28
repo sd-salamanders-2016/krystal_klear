@@ -6,16 +6,18 @@
   <% else %>
 
     <div class="row">
+      <div class="header col-xs-1"><p></p></div>
       <div class="header col-xs-1"><p>Day</p></div>
-      <div class="header col-xs-6"><p>Job Name</p></div>
+      <div class="header col-xs-5"><p>Job Name</p></div>
       <div class="header col-xs-2"><p>Price</p></div>
       <div class="header col-xs-3"><p></p></div>
     </div>
 
     <div class="row">
 
-      <% @user.work_orders.current_week.incomplete.order(:position).each do |wo| %>
-        <div class='reorder' id='wo_<%= wo.id %>'>
+      <% @user.work_orders.current_week.incomplete.each do |wo| %>
+        <div class='reorder'>
+          <div class="not-header col-xs-1"><i class="fa fa-bars" aria-hidden="true"></i></div>
           <div class="not-header col-xs-1">
             <% if wo.route.day != nil %>
               <p><%= wo.route.day.capitalize.slice(0..2) %></p>
@@ -23,9 +25,8 @@
               <p>TBA</p>
             <% end %>
             </div>
-
-          <div class="not-header col-xs-6 job-description-name"><p><%= link_to "#{wo.job.name}", work_order_path(wo) %>, R#<%= wo.route.id %></p></div>
-          <div class="not-header col-xs-2 sortable"><p><%= wo.job.estimated_price %></p></div>
+          <div class="not-header col-xs-5 job-description-name"><p><%= link_to "#{wo.job.name}", work_order_path(wo) %>, R#<%= wo.route.id %></p></div>
+          <div class="not-header col-xs-2"><p><%= wo.job.estimated_price %></p></div>
           <div class="not-header col-xs-3"><%= render partial: "work_orders/done_form", locals: { wo: wo } %></div>
 
         </div>

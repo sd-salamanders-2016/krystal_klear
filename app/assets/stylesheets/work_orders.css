@@ -32,8 +32,9 @@
 }
 
 input[type=submit] {
+  color: white;
   padding:5px 15px;
-  background:#668cff;
+  background:#607D8B;
   border:0 none;
   -webkit-border-radius: 5px;
   border-radius: 5px;
