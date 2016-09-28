@@ -12,7 +12,9 @@ class WorkOrdersController < ApplicationController
   # GET /work_orders/1
   # GET /work_orders/1.json
   def show
-
+    if request.xhr?
+      render :_mobile_work_order, layout: false
+    end
   end
 
   # GET /work_orders/new
@@ -88,4 +90,3 @@ class WorkOrdersController < ApplicationController
       params.require(:work_order).permit(:employee_id, :job_id, :final_price, :notes, :complete)
     end
 end
-

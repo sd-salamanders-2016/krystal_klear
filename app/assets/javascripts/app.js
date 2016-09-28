@@ -125,4 +125,70 @@ function dasd() {
           row.children().last().html("<p>$" + Math.round(response.total) + "</p>");
         });
       }
+
 }
+
+
+
+$(document).ready(function(){
+
+  $('.job-description-name').click(function(event) {
+    event.preventDefault();
+    var clicks = $(this).data('clicks');
+    var $this = $(this);
+    var $currentJob = $(this).closest('.reorder')
+    var $url = $(this).find('a').attr('href');
+    if (!clicks) {
+
+       $.ajax({
+         url: $url,
+         method: 'GET'
+       }).done(function(response){
+
+         $currentJob.after(response);
+         $("#detail").slideDown("slow")
+
+       });
+
+    } else {
+
+       $("#detail").slideUp("slow", "swing");
+       setTimeout(function() { $("#detail").remove() }, 1000)
+
+    }
+    $(this).data("clicks", !clicks);
+  });
+
+// done from the slid down form
+  $('body').on('submit', '.update-form', function(event){
+    event.preventDefault();
+    $('.orders-container').show();
+    $("#detail").slideUp("slow", "swing");
+    setTimeout(function() { $("#detail").remove() }, 1000)
+  });
+
+  // done for the main employee page
+  $(".edit_work_order").submit(function(event){
+    event.preventDefault();
+    var $url = $(this).attr('action');
+    var $formData = $(this).serialize();
+    var $completion = $(this).val('work_order[complete]')
+    var $finalPrice = $(this).val('work_order[final_price]')
+    console.log($formData)
+
+    // { work_order[complete]: $completion, work_order[final_price]: $finalPrice }
+
+    console.log($formData);
+    $.ajax({
+      url: $url,
+      data: $formData,
+      method: 'PATCH',
+      dataType: 'JSON'
+    }).done(function(response){
+      alert('responded')
+      console.log(response);
+    })
+  });
+
+
+});
