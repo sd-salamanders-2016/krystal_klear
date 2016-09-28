@@ -6,26 +6,26 @@
   <% else %>
 
     <div class="row">
-      <div class="col-xs-2"><p>Day</p></div>
-      <div class="col-xs-4"><p>Job Name</p></div>
-      <div class="col-xs-2"><p>Price</p></div>
-      <div class="col-xs-4"><p></p></div>
+      <div class="header col-xs-1"><p>Day</p></div>
+      <div class="header col-xs-6"><p>Job Name</p></div>
+      <div class="header col-xs-2"><p>Price</p></div>
+      <div class="header col-xs-3"><p></p></div>
     </div>
 
     <div class="row">
 
       <% @user.work_orders.current_week.incomplete.each do |wo| %>
         <div class='reorder'>
-          <div class="col-xs-2">
+          <div class="not-header col-xs-1">
             <% if wo.route.day != nil %>
               <p><%= wo.route.day.capitalize.slice(0..2) %></p>
             <% else %>
               <p>TBA</p>
             <% end %>
             </div>
-          <div class="col-xs-4 job-description-name"><p><%= link_to "#{wo.job.name}", work_order_path(wo) %>, R#<%= wo.route.id %></p></div>
-          <div class="col-xs-2"><p><%= wo.job.estimated_price %></p></div>
-          <div class="col-xs-4"><%= render partial: "work_orders/done_form", locals: { wo: wo } %></div>
+          <div class="not-header col-xs-6 job-description-name"><p><%= link_to "#{wo.job.name}", work_order_path(wo) %>, R#<%= wo.route.id %></p></div>
+          <div class="not-header col-xs-2"><p><%= wo.job.estimated_price %></p></div>
+          <div class="not-header col-xs-3"><%= render partial: "work_orders/done_form", locals: { wo: wo } %></div>
 
         </div>
 
@@ -41,23 +41,23 @@
   <% else %>
 
     <div class="row">
-      <div class="col-xs-2"><p>Day</p></div>
-      <div class="col-xs-8"><p>Job Name</p></div>
-      <div class="col-xs-2"><p>Price</p></div>
+      <div class="header col-xs-1"><p>Day</p></div>
+      <div class="header col-xs-9"><p>Job Name</p></div>
+      <div class="header col-xs-2"><p>Price</p></div>
     </div>
 
     <div class="row">
       <% @user.work_orders.current_week.complete.each do |wo| %>
         <div class='reorder-complete'>
-          <div class="col-xs-2">
+          <div class="not-header col-xs-1">
             <% if wo.route.day != nil %>
               <p><%= wo.route.day.capitalize.slice(0..2) %></p>
             <% else %>
               <p>TBA</p>
             <% end %>
             </div>
-          <div class="col-xs-8"><p><%= link_to "#{wo.job.name}", work_order_path(wo) %>, R#<%= wo.route.id %></p></div>
-          <div class="col-xs-2"><p><%= wo.job.estimated_price %></p></div>
+          <div class="not-header col-xs-9"><p><%= link_to "#{wo.job.name}", work_order_path(wo) %>, R#<%= wo.route.id %></p></div>
+          <div class="not-header col-xs-2"><p><%= wo.job.estimated_price %></p></div>
         </div>
       <% end %>
     </div>
@@ -71,23 +71,23 @@
   <% else %>
 
     <div class="row">
-      <div class="col-xs-2"><p>Day</p></div>
-      <div class="col-xs-8"><p>Job Name</p></div>
-      <div class="col-xs-2"><p>Price</p></div>
+      <div class="header col-xs-1"><p>Day</p></div>
+      <div class="header col-xs-9"><p>Job Name</p></div>
+      <div class="header col-xs-2"><p>Price</p></div>
     </div>
 
     <div class="row">
       <% @user.work_orders.current_week.pass.each do |wo|  %>
         <div class='reorder-complete'>
-          <div class="col-xs-2">
+          <div class="not-header col-xs-1">
             <% if wo.route.day != nil %>
               <p><%= wo.route.day.capitalize.slice(0..2) %></p>
             <% else %>
               <p>TBA</p>
             <% end %>
             </div>
-          <div class="col-xs-8"><p><%= link_to "#{wo.job.name}", work_order_path(wo) %>, R#<%= wo.route.id %></p></div>
-          <div class="col-xs-2"><p><%= wo.job.estimated_price %></p></div>
+          <div class="not-header col-xs-9"><p><%= link_to "#{wo.job.name}", work_order_path(wo) %>, R#<%= wo.route.id %></p></div>
+          <div class="not-header col-xs-2"><p><%= wo.job.estimated_price %></p></div>
         </div>
       <% end %>
     </div>

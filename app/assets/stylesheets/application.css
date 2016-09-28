@@ -47,7 +47,8 @@
   overflow: auto;
   border: 1px solid gray;
   border-radius: 8px;
-  padding-top: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   width: 100%;
   margin-bottom: 5px;
   clear: both;
@@ -85,13 +86,17 @@
 
  div.form-actions{
   display: block;
-  width: 90%;
+  width: 100%;
  }
 
  div.form-actions input[value="Done"] {
-   width: 80%;
+   width: 100%;
    margin: auto;
  }
+
+.edit_work_order {
+ margin: auto;
+}
 
  .container{
   margin: 0;
@@ -171,6 +176,11 @@ nav {
   text-align: center;
   margin: 0;
 }
+
+/*.incomplete-orders .form-actions {
+  border: 1px solid red;
+  padding: 0px;
+}*/
 
 .navbar-text:active {
   color: dodgerblue;
