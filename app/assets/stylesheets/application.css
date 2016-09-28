@@ -21,6 +21,11 @@
    border: 1px solid gray;
  }
 
+ i {
+  color: #607D8B;
+  font-size: 1.8em;
+}
+
  textarea{
   border-radius: 8px;
   border: 1px solid gray;
@@ -45,7 +50,8 @@
 
  div.reorder{
   overflow: auto;
-  border: 1px solid gray;
+  background-color: white;
+  border: 0.1px solid #CFD8DC;
   border-radius: 8px;
   padding-top: 5px;
   padding-bottom: 5px;
@@ -55,7 +61,7 @@
  }
 
  div.reorder-complete{
-  border: 1px solid gray;
+  border: 0.1px solid #CFD8DC;
   border-radius: 8px;
   padding-top: 10px;
   width: 100%;
@@ -68,6 +74,7 @@
   border: 1px solid white;
   width: 10%;
   padding: 3px;
+  border-radius: 8px;
   background: rgba(255,255,255,0.2);
   margin-left: 10px;
   font-size: 1.8em;
@@ -81,7 +88,7 @@
 
 .sign-out-link:hover {
   text-decoration: none;
-  background-color: lightblue;
+  background-color: #3B6D9D;
 }
 
  div.form-actions{
@@ -118,7 +125,7 @@ body {
   /*margin:0px 5%;*/
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
-  background-color: lightgrey;
+  background-color: #ECEFF1;
 }
 
 #title-and-navbar {
@@ -127,13 +134,20 @@ body {
   width: 100%;
   height: 130px;
   top: 0px;
-  background: url(Star-icon-home.png) no-repeat center center;
-  background-size: 80px 60px;
+  background: url(squee.png) no-repeat center center;
+  background-size: 80px 80px;
   background-position: 50% 39px;
-  background-color: lightblue;
-  border-bottom: 3px solid white;
+  background-color: #607D8B;
+  border-bottom: 3px solid #607D8B;
 }
 
+.reorder-complete {
+  background-color: white;
+}
+
+h3 {
+   text-transform: uppercase;
+}
 
 #content-container {
   max-width: 65%;
@@ -149,11 +163,11 @@ body {
 .company-title {
   width: 100%;
   text-align: center;
-  font-family: georgia;
-  font-weight: 900;
+  font-family: 'Roboto', sans-serif;
   font-size: 30px;
+  text-transform: uppercase;
+  font-weight: 300;
   color: white;
-  font-weight: 1300;
   padding: 10px;
   margin: 0px;
   letter-spacing: 3px;
