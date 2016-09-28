@@ -4,6 +4,11 @@ class WorkOrder < ActiveRecord::Base
   has_many :employee_work_orders
   has_many :employees, through: :employee_work_orders, source: :user
 
+  scope :incomplete, -> { where(complete: "incomplete") }
+  scope :complete, -> { where(complete: "complete") }
+  scope :pass, -> { where(complete: "pass") }
+  scope :current_week, -> { where(week: Time.now.strftime('%W').to_i)}
+
   scope :monday, ->{ joins(:route).where(routes: { day: "monday" }) }
   scope :tuesday, ->{ joins(:route).where(routes: { day: "tuesday" }) }
   scope :wednesday, ->{ joins(:route).where(routes: { day: "wednesday" }) }

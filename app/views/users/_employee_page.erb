@@ -1,68 +1,78 @@
-<% current_week = Time.now.strftime('%W').to_i %>
-
 <div class="orders-container container-fluid">
-  <% @user.current_week_routes.distinct.each do |route| %>
-<!-- user find ROUTES ARRAY DISTINCT -->
 <div class="incomplete-orders">
   <h3>Incomplete Work Orders</h3>
+  <% if @user.work_orders.current_week.incomplete.empty? %>
+    <p>You don't have any incomplete work orders this week!</p>
+  <% else %>
 
     <div class="row">
-      <div class="col-xs-2"><p>R</p></div>
+      <div class="col-xs-2"><p>Day</p></div>
       <div class="col-xs-4"><p>Job Name</p></div>
       <div class="col-xs-2"><p>Price</p></div>
       <div class="col-xs-4"><p></p></div>
     </div>
 
     <div class="row">
-      <% route.current_week_work_orders.where(complete: 'incomplete').each do |wo|  %>
-      <!-- For each route > find the WORK ORDERS that are INCOMPLETE-->
-      <div class='reorder' id='<%= wo.id %>'>
-        <div class="col-xs-2"><p><%= wo.route.id %></p></div>
-        <div class="col-xs-4"><p><%= link_to "#{wo.job.name}", work_order_path(wo)  %></p></div>
-        <div class="col-xs-2"><p><%= wo.job.estimated_price %></p></div>
-        <div class="col-xs-4"><%= render partial: "work_orders/done_form", locals: { wo: wo } %></div>
-      </div>
+
+      <% @user.work_orders.current_week.incomplete.each do |wo| %>
+        <div class='reorder'>
+          <div class="col-xs-2"><p><%= wo.route.day.capitalize.slice(0..2) %></p></div>
+          <div class="col-xs-4"><p><%= link_to "#{wo.job.name}", work_order_path(wo) %>, R#<%= wo.route.id %></p></div>
+          <div class="col-xs-2"><p><%= wo.job.estimated_price %></p></div>
+          <div class="col-xs-4"><%= render partial: "work_orders/done_form", locals: { wo: wo } %></div>
+        </div>
+
       <% end %>
     </div>
-    <div class="save-reordering"><%= render partial: "work_orders/modify_form" %></div>
-  </div>
+  <% end %>
+</div>
 
 <div class="complete-orders">
   <h3>Complete Work Orders</h3>
+  <% if @user.work_orders.current_week.complete.empty? %>
+    <p>You don't have any complete work orders this week!</p>
+  <% else %>
 
-  <div class="row">
-      <div class="col-xs-2"><p>R</p></div>
+    <div class="row">
+      <div class="col-xs-2"><p>Day</p></div>
       <div class="col-xs-8"><p>Job Name</p></div>
       <div class="col-xs-2"><p>Price</p></div>
     </div>
 
     <div class="row">
-      <% route.current_week_work_orders.where(complete: 'complete').each do |wo|  %>
-      <!-- For each route > find the WORK ORDERS that are COMPLETE-->
-      <div class="col-xs-1"><p><%= wo.route.id %></p></div>
-      <div class="col-xs-8"><p><%= link_to "#{wo.job.name}", work_order_path(wo)  %></p></div>
-      <div class="col-xs-2"><p><%= wo.job.estimated_price %></p></div>
+      <% @user.work_orders.current_week.complete.each do |wo| %>
+        <div class='reorder-complete'>
+          <div class="col-xs-1"><p><%= wo.route.day.capitalize.slice(0..2) %></p></div>
+          <div class="col-xs-8"><p><%= link_to "#{wo.job.name}", work_order_path(wo) %>, R#<%= wo.route.id %></p></div>
+          <div class="col-xs-2"><p><%= wo.job.estimated_price %></p></div>
+        </div>
       <% end %>
     </div>
+  <% end %>
 </div>
 
 <div class="passed-orders">
   <h3>Customer Pass Work Orders</h3>
-  <!-- For each route > find the WORK ORDERS that are PASSED-->
-  <div class="row">
-      <div class="col-xs-2"><p>R</p></div>
+  <% if @user.work_orders.current_week.pass.empty? %>
+    <p>You don't have any customer pass work orders this week!</p>
+  <% else %>
+
+    <div class="row">
+      <div class="col-xs-2"><p>Day</p></div>
       <div class="col-xs-8"><p>Job Name</p></div>
       <div class="col-xs-2"><p>Price</p></div>
     </div>
 
-  <div class="row">
-      <% route.current_week_work_orders.where(complete: 'pass').each do |wo|  %>
-      <div class="col-xs-2"><p><%= wo.route.id %></p></div>
-      <div class="col-xs-8"><p><%= link_to "#{wo.job.name}", work_order_path(wo)  %></p></div>
-      <div class="col-xs-2"><p><%= wo.job.estimated_price %></p></div>
+    <div class="row">
+      <% @user.work_orders.current_week.pass.each do |wo|  %>
+        <div class='reorder-complete'>
+          <div class="col-xs-2"><p><%= wo.route.day.capitalize.slice(0..2) %></p></div>
+          <div class="col-xs-8"><p><%= link_to "#{wo.job.name}", work_order_path(wo) %>, R#<%= wo.route.id %></p></div>
+          <div class="col-xs-2"><p><%= wo.job.estimated_price %></p></div>
+        </div>
       <% end %>
     </div>
+  <% end %>
 </div>
-<% end %>
 
 </div>
